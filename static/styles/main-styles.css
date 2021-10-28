@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Libre Barcode 128 Text');
+@import url('https://fonts.googleapis.com/css?family=Syne Mono');
+
+
+:root {
+    font-family: 'Syne Mono';
+    color: green;
+    min-height: 100vh;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.game-title {
+    font-family: 'Libre Barcode 128 Text';
+    color: green;
+    font-size: 3em;
+    font-weight: normal;
+    padding: 20px;
+    margin: 0;
+    
+}
+
+body {
+    margin: 0;
+    background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 5px;
+    justify-content: center;
+}
+
+.game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-info {
+    font-size: 1.25em;
+}
+
+/*.game-objective {
+    font-size: .9em;
+    text-align: center;
+}*/
+
+.card {
+    background: black;
+    border: 1px solid green;
+    height: 100px;
+    width: 75px;
+    margin: 5px;
+}
+
+
+
