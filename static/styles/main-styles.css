@@ -35,7 +35,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-gap: 5px;
-    margin: 50px;
+    margin: 100px;
     justify-content: center;
     perspective: 500px;
 }
@@ -51,10 +51,10 @@ body {
     text-shadow: 0px 0px 15px green;
 }
 
-.game-objective {
+/*.game-objective {
     font-size: .9em;
     text-align: center;
-}
+}*/
 
 .card {
     position: relative;
@@ -77,16 +77,15 @@ body {
     transition: transform 1000ms ease-in-out;
 }
 
-.card.visible .card-back {
+.card:hover .card-back {
     transform: rotateY(-180deg);
 }
 
-.card.visible .card-front {
+.card:hover .card-front {
     transform: rotateY(0);
 }
 
 .card.matched .card-value {
-    transform: scale(0.13);
     animation: dance 1s linear infinite 1000ms;
 }
 
@@ -108,13 +107,8 @@ body {
     background: black;
 }
 
-.card-value {
-    transform: scale(0.15);
-}
-
 .card-value:hover  {
     transition: transform 400ms ease-in-out;
-    transform: scale(0.13);
 }
 
 .card-barcode {
@@ -131,7 +125,6 @@ body {
 
 .card-back:hover .card-barcode-top {
     transform: scale(0.9) translateX(8px) translateY(-5px);
-
 }
 
 .card-back:hover .card-barcode-bottom {
@@ -139,7 +132,7 @@ body {
 }
 
 
-@keyframes dance {
+/*@keyframes dance {
     0%, 100% {
         transform: rotate(0);
     }
@@ -150,5 +143,5 @@ body {
         transform: rotate(30deg);
     }
 
-}
+}*/
 
