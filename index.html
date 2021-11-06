@@ -13,25 +13,22 @@
     <div id="info-overlay" class="info-overlay">
         <div class="info-button"><i class="far fa-question-circle"></i></div>
     </div>
-    <div id="winner-text" class="overlay winner">
-        <h3 class="overlay-text overlay-header">CONGRATULATIONS</h3>
-        <div class="overlay-text overlay-button">
-            <button>RESTART</button>
-            <button>RETURN TO LEVEL SELECTION</button>
+    <div id="winner-text" class="overlay-window">
+        <p>CONGRATULATIONS</p>
+        <div class="overlay-window">
+            <button id="restart" class="overlay-button visible">RESTART</button>
+            <button id="return-level" class="overlay-button visible">RETURN TO LEVEL SELECTION</button>
         </div>
     </div>
-    <div id="game-over-text" class="overlay game-over">
-        <h3 class="overlay-text overlay-header">GAME OVER</h3>
-        <div class="overlay-text overlay-button">
-            <button>RESTART</button>
-            <button>RETURN TO LEVEL SELECTION</button>
+    <div id="game-over-text" class="overlay-window">
+        <p>GAME OVER</p>
+        <div class="overlay-window">
+            <button id="restart" class="overlay-button">RESTART</button>
+            <button id="return-level" class="overlay-button">RETURN TO LEVEL SELECTION</button>
         </div>
     </div>
     <div class="game-container">
         <div class="game-info-container">
-            <!--<div class="game-objective">
-                <h3>match all the cards</h3>
-            </div>-->
             <div class="game-info">
                 <p><span id="time-remaining">100 </span>Time</p>
             </div>
