@@ -38,7 +38,6 @@ class AudioController {
     }
 }
 
-
 class MixOrMatch {
     constructor(totalTime, cards) {
         this.cardsArray = cards;
@@ -176,3 +175,12 @@ if(document.readyState === 'loading') {
 } else {
     ready();
 }
+
+
+//for info-button toggle//
+
+let infoOverlay = document.getElementById("info-overlay");
+let infoButton = document.getElementById("toggle");
+infoButton.addEventListener('click', evt => {
+    infoOverlay.classList.toggle('visible');
+});
