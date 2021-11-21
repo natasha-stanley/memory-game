@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/82e7ef2288.js" ></script>
+    <script src="https://kit.fontawesome.com/82e7ef2288.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <link href="static/styles/main-styles.css" rel="stylesheet">
     <title>Card Game</title>
 </head>
   <body>
     <div><h1 class="page-title">Game Name</h1></div>
+    <!--info overlay-->
     <div>
       <div id="toggle"><i class="far fa-question-circle"></i></div>
-        <div id="info-overlay" class="info-overlay"><h1>Rules</h1>
+        <div id="info-overlay" class="info-overlay pause-music"><h1>Rules</h1>
           <ul>
             <li>Standard
               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. In quam assumenda quidem quos voluptas quae accusamus magnam, saepe autem expedita perspiciatis nobis adipisci, suscipit praesentium consequatur odio exercitationem rerum rem!</p>
@@ -27,19 +29,46 @@
         </div>
       </div>
     </div>
-    <div class="overlay-text visible">
+    <!--welcome section-->
+    <div id="welcome-overlay" class="welcome-overlay">
+      <p>welcome player</p>
+      <label for="fname">enter your name:</label><br>
+      <input type="text" id="fname" name="fname">
+      <button id="enter-button" class="welcome-button">enter</button>
+    </div>
+    <!--level section-->
+    <div id="level-selection" class="level-overlay">
+      <p>welcome player <output id="fnameOutput"></output></p>
+      <p>please select a difficulty</p>
+      <ul>
+        <li id="standard-game"><p style="font-weight: bold; font-size: 1em;">Standard</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </li>
+        <li id="hard-game"><p style="font-weight: bold; font-size: 1em;">Hard</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </li>
+        <li id="nightmare-game"><p style="font-weight: bold; font-size: 1em;">Nightmare</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </li>
+      </ul>
+    </div>
+    <!--game start overlay-->
+    <div class="overlay-text  ">
       <p>Click to Start</p>
     </div>
+    <!--game over overlay-->
     <div id="game-over-text" class="overlay-text">
       <p>GAME OVER</p>
       <span><button id="restart" class="overlay-button">RESTART</button></span>
       <span></span><button id="return-level" class="overlay-button">RETURN TO LEVEL SELECTION</button></span>
     </div>
+    <!--victory overlay-->
     <div id="victory-text" class="overlay-text ">
       <p>CONGRATULATIONS</p>
       <span><button id="restart" class="overlay-button">RESTART</button></span>
       <span></span><button id="return-level" class="overlay-button">RETURN TO LEVEL SELECTION</button></span>
     </div>
+    <!--game container-->
     <div class="game-container">
       <div class="game-info-container">
         <div class="game-info">
@@ -193,6 +222,18 @@
           <img class="card-value" src="static/images/cards/diamond-queen-mob.png" alt="diamond-queen">
         </div>
       </div>
+    </div>
+    <!--audio-->
+    <div class="sfx">
+      <audio id="audio">
+        <source id="bg-music" src="static/audio/Sci-fi Pulse Loop.mp3" type="audio/mpeg">
+        <source id="card-flip-sfx" src="static/audio/card-flip.mp3" type="audio/mpeg">
+        <source id="card-match-sfx" src="static/audio/card-match.mp3" type="audio/mpeg">
+        <source id="game-win-sfx" src="static/audio/game-win.mp3" type="audio/mpeg">
+        <source id="game-over-sfx" src="static/audio/game-over.mp3" type="audio/mpeg">
+        <source id="confirm-sfx" src="static/audio/confirmation.mp3" type="audio/mpeg">
+      </audio>
+      <button id="playPauseBTN" class="sfx" onclick="playPause()"><i class="fas fa-volume-up"></i></button>
     </div>
   </body>
   <script src="static/scripts/script.js" async></script>
