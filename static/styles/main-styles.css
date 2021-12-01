@@ -17,8 +17,7 @@ body {
 
 .page-title {
     font-family: 'Libre Barcode 128 Text';
-    color: green;
-    text-shadow: 0px 0px 20px green;
+    text-shadow: 0px 0px 40px green;
     font-size: 3em;
     font-weight: normal;
     padding: 20px;
@@ -70,7 +69,7 @@ body {
     right: 0;
     bottom: 0;
     font-size: 1.5em;
-    text-shadow: 0px 0px 40px green;
+    text-shadow: 0px 0px 60px green;
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -80,16 +79,31 @@ body {
     z-index: 998;
 }
 
+.welcome-tag{
+    text-shadow: 0px 0px 20px lightgreen; 
+}
+
+.welcome-overlay.visible {
+    display: none;
+}
+
 .welcome-overlay label {
     font-weight: bolder;
     font-size: 0.5em;
 }
 
 .welcome-overlay input {
+    font-family: 'Syne Mono';
+    font-size: 0.6em;
     color: green;
     background-color: black;
     border: 3px solid green;
     border-radius: 5%;
+}
+
+.welcome-overlay input:focus {
+    outline: green;
+    box-shadow: 0px 0px 20px lightgreen;
 }
 
 .welcome-button {
@@ -115,7 +129,7 @@ body {
 }
 
 .level-overlay {
-    display: flex;
+    display: none;
     flex-direction: column;
     background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
     top: 0;
@@ -131,6 +145,25 @@ body {
     flex-direction: column;
     animation: none !important;
     z-index: 998;
+}
+
+.level-overlay.visible {
+    display: flex;
+}
+
+.level-header {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.level-overlay-tag {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-shadow: 0px 0px 40px green;
+}
+
+.level {
+    cursor: pointer;
 }
 
 .level-overlay ul {
@@ -154,7 +187,6 @@ body {
     box-shadow: 0px 0px 20px white;
 }
 
-
 ul {
     padding: 40px;
     list-style-type: none;
@@ -173,10 +205,10 @@ ul li p {
 
 .fa-question-circle {
     color:green;
-    font-size: 3em;
+    font-size: 2em;
     position: absolute;
     display: unset;
-    top: 20px;
+    top: 30px;
     right: 20px;
     text-shadow: 0px 0px 20px green;
     cursor: pointer;
@@ -197,7 +229,7 @@ ul li p {
     color: green;
     border: none;
     position: fixed;
-    bottom: 50px;
+    bottom: 30px;
     left: 20px;
     cursor: pointer;
 }
@@ -343,10 +375,10 @@ ul li p {
 }
 
 .overlay-button {
+    display: flex;
     height: 50px;
     width: 150px;
     background-color: green;
-    font-family: 'Syne Mono';
     font-weight: bolder;
     color: white;
     border: none;
@@ -360,7 +392,6 @@ ul li p {
     background-color: white;
     color: green;
     box-shadow: 0px 0px 30px green;
-    border: 2px solid green;
 }
 
 .overlay-button.visible {
@@ -383,13 +414,12 @@ ul li p {
 }
 
 
-
-
 /*-----for media queries-----*/
 
 
 @media (min-width: 750px) {
     .page-title {
+        text-shadow: 0px 0px 40px green; 
         font-size: 4em;
     }
 
@@ -406,6 +436,105 @@ ul li p {
         font-size: 3em;
         padding-left: 0vw;
     }
+
+    .welcome-overlay {
+        display: flex;
+        flex-direction: column;
+        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 2.5em;
+        text-shadow: 0px 0px 40px green;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        animation: none !important;
+        z-index: 998;
+    }
+
+    .welcome-tag{
+        text-shadow: 0px 0px 20px lightgreen; 
+    }
+
+    .welcome-overlay label {
+        font-weight: bolder;
+        font-size: 0.5em;
+    }
+    
+    .welcome-overlay input {
+        color: green;
+        width: 200px;
+        height: 30px;
+        background-color: black;
+        box-shadow: 0px 0px 20px green; 
+        border: 3px solid green;
+        border-radius: 5%;
+    }
+
+    .level-overlay {
+        display: none;
+        flex-direction: column;
+        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 2em;
+        text-shadow: 0px 0px 40px green;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        animation: none !important;
+        z-index: 998;
+    }
+    
+    .level-overlay.visible {
+        display: flex;
+    }
+
+    .level-header {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .level-overlay-tag {
+        font-size: 1.1em;
+        font-weight: bold;
+        text-shadow: 0px 0px 40px green;
+    }
+
+    .level-overlay p p {
+        text-shadow: 0px 0px 40px orchid;
+    }
+    
+    .level-overlay ul {
+        display: flex;
+        column-count: 3;
+        column-gap: 50px;
+    }
+    
+    .level-overlay li {
+        padding: 5px;
+        height: 300px;
+        width: 250px;
+        float: unset;
+        font-size: 0.4em;
+        border: 2px solid green;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px green;
+        cursor: pointer;
+    }
+    
+    .level-overlay li:hover {
+        background-color: white;
+        box-shadow: 0px 0px 20px white;
+    }
     
     ul {
         font-size: 1.75em;
@@ -417,8 +546,12 @@ ul li p {
     }
     
     .game-container {
-        grid-gap: 20px;
-        margin: 75px; 
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-gap: 10px;
+        margin-top: 175px;
+        justify-content: center;
+        perspective: 500px;
     }
 
     .card {
@@ -426,15 +559,6 @@ ul li p {
         width: 100px;
         margin: 5px;
         border-radius: 5%;
-    }
-
-    .card-value {
-        transform: scale(1.3);
-        -webkit-transform: scale(1.3);
-        -moz-transform: scale(1.3);
-        -o-transform: scale(1.3);
-        -ms-transform: scale(1.3);
-        transition: transform 100ms ease-in-out;
     }
 
     .overlay-text {
@@ -453,8 +577,35 @@ ul li p {
     }
 
     .overlay-button {
+        display: flex;
         height: 75px;
         width: 200px;
+        background-color: green;
+        font-weight: bolder;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        justify-content: space-around;
+        align-items: center;
+        margin: 10px;
+    }
+    
+    .overlay-button:hover {
+        background-color: white;
+        color: green;
+        box-shadow: 0px 0px 30px green;
+    }
+
+    .sfx {
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 1.5em;
+        color: green;
+        border: none;
+        position: fixed;
+        bottom: 30px;
+        left: 20px;
+        cursor: pointer;
     }
 
 }
