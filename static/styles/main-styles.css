@@ -17,7 +17,7 @@ body {
 
 .page-title {
     font-family: 'Libre Barcode 128 Text';
-    text-shadow: 0px 0px 40px green;
+    text-shadow: 0px 0px 40px lightgreen;
     font-size: 3em;
     font-weight: normal;
     padding: 20px;
@@ -37,17 +37,18 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     flex-direction: column;
     padding-top: 50px;
     z-index: 99;
 }
 
-.info-overlay h1 {
-    font-size: 2em;
-    padding-left: 11vw;
+.info-overlay p {
+    flex-direction: column;
+    border: 1px solid green;
+    padding: 5px;
 }
 
 .info-overlay.visible {
@@ -77,10 +78,16 @@ body {
     flex-direction: column;
     animation: none !important;
     z-index: 998;
+    animation: fadeOut 1s backwards;
+    -webkit-animation: fadeOut 1s backwards;
+    -moz-animation: fadeOut 1s backwards;
+    -o-animation: fadeOut 1s backwards;
+    -ms-animation: fadeOut 1s backwards; 
 }
 
 .welcome-tag{
-    text-shadow: 0px 0px 20px lightgreen; 
+    font-size: 1.5em;
+    text-shadow: 0px 0px 10px green; 
 }
 
 .welcome-overlay.visible {
@@ -89,12 +96,15 @@ body {
 
 .welcome-overlay label {
     font-weight: bolder;
-    font-size: 0.5em;
+    font-size: 0.9em;
 }
 
 .welcome-overlay input {
     font-family: 'Syne Mono';
     font-size: 0.6em;
+    font-weight: bolder;
+    height: 30px;
+    width: 200px;
     color: green;
     background-color: black;
     border: 3px solid green;
@@ -128,7 +138,29 @@ body {
     border: 2px solid green;
 }
 
-.level-overlay {
+.start-game {
+    margin: 30px;
+    height: 40px;
+    width: 120px;
+    background-color: green;
+    font-family: 'Syne Mono';
+    font-weight: bolder;
+    color: white;
+    border: none;
+    border-radius: 5%;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.start-game:hover {
+    background-color: white;
+    color: green;
+    box-shadow: 0px 0px 30px green;
+    border: 2px solid green;
+}
+
+.rules {
     display: none;
     flex-direction: column;
     background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
@@ -147,60 +179,20 @@ body {
     z-index: 998;
 }
 
-.level-overlay.visible {
+.rules.visible {
     display: flex;
 }
 
-.level-header {
-    font-size: 1em;
-    font-weight: bold;
+.rules-stars p {
+    flex-direction: column;
+    border: 1px solid green;
+    padding: 5px;
 }
 
 .level-overlay-tag {
     font-size: 1.1em;
     font-weight: bold;
     text-shadow: 0px 0px 40px green;
-}
-
-.level {
-    cursor: pointer;
-}
-
-.level-overlay ul {
-    column-count: 3;
-    column-gap: 5px;
-}
-
-.level-overlay li {
-    padding: 5px;
-    width: 100px;
-    float: right;
-    font-size: 0.9em;
-    border: 2px solid green;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px green;
-    cursor: pointer;
-}
-
-.level-overlay li:hover {
-    background-color: white;
-    box-shadow: 0px 0px 20px white;
-}
-
-ul {
-    padding: 40px;
-    list-style-type: none;
-}
-
-ul li {
-    font-size: 1em;
-    text-align: left;
-    font-weight: bold;
-}
-
-ul li p {
-    font-size: 0.9em;
-    font-weight: normal;
 }
 
 .fa-question-circle {
@@ -274,7 +266,7 @@ ul li p {
     align-items: center;
     backface-visibility: hidden;
     box-shadow: 0px 0px 10px green;
-    transition: transform 1000ms ease-in-out;
+    transition: transform 500ms ease-in-out;
 }
 
 .card.visible .card-back {
@@ -418,23 +410,44 @@ ul li p {
 
 
 @media (min-width: 750px) {
+
     .page-title {
-        text-shadow: 0px 0px 40px green; 
+        text-shadow: 0px 0px 10px rgb(0, 214, 0); 
         font-size: 4em;
     }
 
     .info-overlay {
         display: none;
+        text-shadow: 0px 0px 30px green;
+        background-color: rgba(0, 0, 0, 0.829);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 2em;
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding-top: 10px;
+        flex-direction: column;
+        padding-top: 50px;
         z-index: 99;
     }
     
-    .info-overlay h1 {
-        font-size: 3em;
-        padding-left: 0vw;
+    .info-overlay p {
+        flex-direction: column;
+        border: 1px solid green;
+        padding: 5px;
+    }
+    
+    .info-overlay.visible {
+        display: flex;
+        flex-direction: column;
+        animation: info-grow 500ms forwards;
+        -webkit-animation: info-grow 500ms forwards;
+        -moz-animation: info-grow 500ms forwards;
+        -o-animation: info-grow 500ms forwards;
+        -ms-animation: info-grow 500ms forwards;
     }
 
     .welcome-overlay {
@@ -457,12 +470,35 @@ ul li p {
     }
 
     .welcome-tag{
-        text-shadow: 0px 0px 20px lightgreen; 
+        text-shadow: 0px 0px 10px green; 
     }
 
     .welcome-overlay label {
         font-weight: bolder;
         font-size: 0.5em;
+    }
+
+    .welcome-button {
+        margin-top: 100px;
+        height: 60px;
+        width: 160px;
+        font-size: 0.6em;
+        background-color: green;
+        font-family: 'Syne Mono';
+        font-weight: bolder;
+        color: white;
+        border: none;
+        border-radius: 5%;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .welcome-button:hover {
+        background-color: white;
+        color: green;
+        box-shadow: 0px 0px 30px green;
+        border: 2px solid green;
     }
     
     .welcome-overlay input {
@@ -475,7 +511,7 @@ ul li p {
         border-radius: 5%;
     }
 
-    .level-overlay {
+    .rules {
         display: none;
         flex-direction: column;
         background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
@@ -483,7 +519,7 @@ ul li p {
         left: 0;
         right: 0;
         bottom: 0;
-        font-size: 2em;
+        font-size: 1.4em;
         text-shadow: 0px 0px 40px green;
         position: fixed;
         justify-content: center;
@@ -494,55 +530,43 @@ ul li p {
         z-index: 998;
     }
     
-    .level-overlay.visible {
+    .rules.visible {
         display: flex;
     }
-
-    .level-header {
-        font-size: 1.1em;
-        font-weight: bold;
-    }
-
-    .level-overlay-tag {
-        font-size: 1.1em;
-        font-weight: bold;
-        text-shadow: 0px 0px 40px green;
-    }
-
-    .level-overlay p p {
-        text-shadow: 0px 0px 40px orchid;
-    }
     
-    .level-overlay ul {
-        display: flex;
-        column-count: 3;
-        column-gap: 50px;
+    .rules-stars p {
+        flex-direction: column;
+        border: 1px solid green;
+        box-shadow: 0px 0px 10px green;
+        padding: 10px;
     }
-    
-    .level-overlay li {
+
+    .fa-star {
         padding: 5px;
-        height: 300px;
-        width: 250px;
-        float: unset;
-        font-size: 0.4em;
-        border: 2px solid green;
-        border-radius: 10px;
-        box-shadow: 0px 0px 20px green;
+        align-items: left;
+    }
+
+    .start-game {
+        margin: 30px;
+        height: 60px;
+        width: 160px;
+        font-size: 0.9em;
+        background-color: green;
+        font-family: 'Syne Mono';
+        font-weight: bolder;
+        color: white;
+        border: none;
+        border-radius: 5%;
+        justify-content: space-around;
+        align-items: center;
         cursor: pointer;
     }
     
-    .level-overlay li:hover {
+    .start-game:hover {
         background-color: white;
-        box-shadow: 0px 0px 20px white;
-    }
-    
-    ul {
-        font-size: 1.75em;
-    }
-    
-    ul li {
-        text-align: center;
-        font-weight: bold;
+        color: green;
+        box-shadow: 0px 0px 30px green;
+        border: 2px solid green;
     }
     
     .game-container {
@@ -664,6 +688,15 @@ ul li p {
     }
     to {
         opacity: 100;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 100;
+    }
+    to {
+        opacity: 0;
     }
 }
 
