@@ -12,66 +12,63 @@
 </head>
   <body>
     <div><h1 class="page-title">MATCH</h1></div>
-
     <!--info overlay-->
     <div>
       <div id="toggle"><i class="far fa-question-circle"></i></div>
         <div id="info-overlay" class="info-overlay"><h1>Rules</h1>
           <h4>Click on a card and then match it to its corresponding icon. Match all to win.</h4>
-          <p>match all the cards in under 30 seconds and 30 flips to score
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-          <p>match all the cards in under 40 seconds and 40 flips to score
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-          <p>match all the cards in under 50 seconds and 50 flips to score
-          <i class="fas fa-star"></i></p>
+          <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <br>
+            match all the cards in under 30 seconds and 30 flips to score
+          </p>
+          <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <br>
+            match all the cards in under 40 seconds and 40 flips to score
+          </p>
+          <p><i class="fas fa-star"></i>
+            <br>
+            match all the cards in under 50 seconds and 50 flips
+          </p>
       </div>
     </div>
-
+    <!--reset button-->
+    <div class="reset-button">
+      <span id="reset" class="reset"><i class="fas fa-share-square"></i></span>
+    </div>
     <!--welcome section-->
     <div id="welcome-overlay" class="welcome-overlay ">
       <p class="welcome-tag">welcome player</p>
-      <!--<form name="form" onsubmit="return getName()">-->
-        <label for="fname">enter a username:</label><br>
-        <input type="text" id="fname" name="fname" placeholder="name"><br>
-        <button type="submit" value="Save" id="enter-button" class="welcome-button">enter</button>
-     <!--</form>-->
-    <!--<div id="welcome-overlay" class="welcome-overlay ">
-      <p class="welcome-tag">welcome player</p>
-    <form name="myForm" id="myForm" class="" onsubmit="return validateForm()" method="get">
-      <label for="fname">enter your username:</label><br>
-      <input type="text" id="fname" name="fname" placeholder="name"/><br>
-      <input type="submit" name="submit" id="enter-button" class="welcome-button" value="enter" onclick="false"/>
-    </form>-->
+        <form id="get-username">
+            <label for="fname">enter a username:</label><br>
+            <input type="text" name="username" id="fname" placeholder="username"/><br>
+            <input type="submit" id="enter-button" class="welcome-button" value="enter" />
+        </form>
     </div>
-
     <!--rules section-->
     <div id="rules" class="rules ">
-      <h1>welcome <output id="fnameOutput"></output></h1>
+      <h1>welcome <output id="fnameOutput" class="fname"></output></h1>
       <h2>rules</h2>
       <div class="rules-stars">
-        <h4>Click on a card and then match it to its corresponding icon. Match all to win.</h4>
-        <p>match all the cards in under 30 seconds and 30 flips to score
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-        <p>match all the cards in under 40 seconds and 40 flips to score
-        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-        <p>match all the cards in under 50 seconds and 50 flips to score
-        <i class="fas fa-star"></i></p>
+        <h4>Click on a card and then match it to its corresponding icon. Match all the cards within 100 seconds to win.</h4>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <p>match all the cards in under 30 seconds and 30 flips</p></div>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <p>match all the cards in under 50 seconds and 40 flips</p></div>
+        <div class="stars"><i class="fas fa-star"></i>
+          <p>match all the cards in under 50 seconds and 50 flips</p></div>
       </div>
       <button id="start-game" class="start-game">start game</button>
     </div>
-
     <!--game over overlay-->
     <div id="game-over-text" class="overlay-text">
       <p>GAME OVER</p>
-      <span><button id="restart-gameover" class="overlay-button restart standard">RESTART</button></span>
-      <span><button id="return-level-gameover" class="overlay-button">RETURN TO LEVEL SELECTION</button></span>
+      <span><button id="restart-gameover" class="overlay-button restart standard">retry?</button></span>
     </div>
-
     <!--victory overlay-->
     <div id="victory-text" class="overlay-text ">
-      <p>CONGRATULATIONS<output id="fnameOutputCongrats"></output> </p>
+      <p>CONGRATULATIONS <output id="fnameOutputCongrats"  class="fname-congrats"></output> </p>
       <p><output id="stats"></output></p>
-      <span><button id="restart-victory" class="overlay-button">RESTART</button></span>
+      <span><button id="restart-victory" class="overlay-button">retry?</button></span>
     </div>
     <!--game container-->
     <div class="game-container">
@@ -228,7 +225,6 @@
         </div>
       </div>
     </div>
-
     <!--audio-->
     <div class="sfx">
       <audio id="audio">
@@ -241,7 +237,6 @@
       </audio>
       <button id="music-toggle" class="sfx" onclick="playMusic()" ><i class="fas fa-volume-mute"></i></button>
     </div>
-
   <script src="static/scripts/script.js" async></script>
   </body>
 </html>

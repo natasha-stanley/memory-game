@@ -5,7 +5,6 @@
 /*jshint esversion: 6 */
 
 
-
 //for welcome page and level selection
 function getName() {
 
@@ -14,11 +13,19 @@ function getName() {
     var enterBTN = document.getElementById('enter-button');
     var nameOutputVictory = document.getElementById('fnameOutputCongrats');
 
-    enterBTN.addEventListener('click', () => {
+    enterBTN.addEventListener('click', storeData(), retrieveData(), false);
+
+    $("#get-username").submit(function(e) {
+        e.preventDefault(); //stop page refresh
+    });
+    
+
+    /*enterBTN.addEventListener('click', () => {
         storeData();
         retrieveData();
         
-    });
+    });*/
+    
 
     function storeData() {
         localStorage.name = name.value;
@@ -35,8 +42,8 @@ var welcomeOverlay = document.getElementById('welcome-overlay');
 var rulesPage = document.getElementById('rules');
 
 enterBTN.addEventListener('click', () => {
-        welcomeOverlay.classList.toggle('visible');
         getName();
+        welcomeOverlay.classList.toggle('visible');
         rulesPage.classList.toggle('visible');
 
 });
@@ -121,11 +128,11 @@ class AudioController {
         }
     }*/
 
-    pauseSFX() {
+    /*pauseSFX() {
         if(this.musicToggle.innerHTML = ('<i class="fas fa-volume-mute"></i>')) {
             this.stopMusic();
         }
-    }
+    }*/
 
     stopMusic() {
         //this.bgMusic.pause();
@@ -135,12 +142,12 @@ class AudioController {
 
 
     flip() {
-        //this.flipSound.play();
-        if(this.musicToggle.innerHTML = ('<i class="fas fa-volume-mute"></i>')){
+        this.flipSound.play();
+        /*if(this.musicToggle.innerHTML = ('<i class="fas fa-volume-mute"></i>')){
             this.flipSound.pause();
         } else {
             this.flipSound.play();
-        }
+        }*/
     }
 
     match() {
@@ -198,7 +205,7 @@ class MixOrMatch {
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.infoToggle = document.getElementById('toggle');
-        this.musicToggle = document.getElementById('music-toggle')
+        this.musicToggle = document.getElementById('music-toggle');
         this.audioController = new AudioController();
         this.myInterval = -1;
     }
@@ -307,7 +314,7 @@ class MixOrMatch {
 
 
     restartCountdown() {
-        if(this.infoToggle.classList = ('visible')){
+        if(this.infoToggle.classList === ('visible')){
             clearInterval(this.countDown);
         } else {
             return setInterval(() => {
@@ -316,17 +323,14 @@ class MixOrMatch {
             
             if(this.timeRemaining === 0)
                 this.gameOver();
-            }, 1000)
+            }, 1000);
         }
 
-      
         /*this.timeRemaining = setInterval(() => {
             this.timeRemaining++;
             this.timer.innerText = this.timeRemaining;
         });*/
     }
-
- 
 
     gameOver() {
         clearInterval(this.countDown);
@@ -337,32 +341,31 @@ class MixOrMatch {
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
+        getName();
         document.getElementById('victory-text').classList.add('visible');
-        if(this.totalTime >= 70 && this.totalClicks <= 30){
-            document.getElementById('stats').innerHTML = `Awesome! You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
-        } else if (this.totalTime >= 50) {
-            document.getElementById('stats').innerHTML = `Pretty good! You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+        if (this.totalTime >= 70 && this.totalTime <= 90 || this.totalClicks <= 30 && this.totalClicks >= 10) {
+            document.getElementById('stats').innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+            '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        } else if (this.totalTime >= 50 && this.totalTime <= 70 && this.totalClicks <= 40 && this.totalClicks >= 30) {
+            document.getElementById('stats').innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+            '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        } else if (this.totalTime >= 50 && this.totalTime <= 70 && this.totalClicks <= 50 && this.totalClicks >= 40) {
+            document.getElementById('stats').innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+            '<i class="fas fa-star">';
         } else {
-            document.getElementById('stats').innerHTML = `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+            document.getElementById('stats').innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
         }
-
     }
 
-    /*victory() {
+    reset() {
         clearInterval(this.countDown);
-        this.audioController.victory();
-        document.getElementById('victory-text').classList.add('visible');
-        if(this.totalTime >= 70 && !this.totalClicks <= 30 || !this.totalTime >= 70 && this.totalClicks <= 30)  {
-            document.getElementById('stats').innerHTML = `Amazing! You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
-        } else if (this.totalTime >= 60 && !this.totalClicks <= 40 || !this.totalTime >= 60 && this.totalClicks <= 40) {
-            document.getElementById('stats').innerHTML = `Pretty good! You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
-        } else if (this.totalTime >= 50 || this.totalClicks <= 50){
-            document.getElementById('stats').innerHTML = `Nice! You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
-        } else {
-            document.getElementById('stats').innerHTML = `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
-        }
-    }*/
-
+        this.timeRemaining = 100;
+        this.startGame();
+    }
 
     shuffleCards() {
         for(let i = this.cardsArray.length - 1; i > 0; i--) {
@@ -375,8 +378,7 @@ class MixOrMatch {
     canFlipCard(cards) {
         return !this.busy && !this.matchedCards.includes(cards) && cards !== this.cardToCheck;
     }
-};
-
+}
 
 //for info overlay toggle
 let infoOverlay = document.getElementById('info-overlay');
@@ -385,14 +387,33 @@ infoButton.addEventListener('click', () => {
     infoOverlay.classList.toggle('visible');
 });
 
+
+/*
+//for reset game
+let resetBTN = document.getElementById('reset');
+let cards = Array.from(document.getElementsByClassName('card'));
+let newGame = new MixOrMatch(100, cards);
+
+resetBTN.addEventListener('click', () => {
+    newGame.reset();
+});
+*/
+
+
+
+
+
 function ready() {
 
     //let gameCard = document.getElementById('standard-game');
     let rulesPage = document.getElementById('rules');
     let gameOver = document.getElementById('game-over-text');
-    let restartGame = document.getElementById('restart-gameover');
+    let victory = document.getElementById('victory-text');
+    let restartGO = document.getElementById('restart-gameover');
+    let restartV = document.getElementById('restart-victory');
     let cards = Array.from(document.getElementsByClassName('card'));
     let startGame = document.getElementById('start-game');
+    let resetBTN = document.getElementById('reset');
     let game = new MixOrMatch(100, cards);
 
     startGame.addEventListener('click', () => {
@@ -400,13 +421,27 @@ function ready() {
         game.startGame();
     });
 
+    restartGO.addEventListener('click', () => {
+        gameOver.classList.remove('visible');
+        game.startGame();
+    });
+
+    restartV.addEventListener('click', () => {
+        victory.classList.remove('visible');
+        game.startGame();
+    });
+
+    resetBTN.addEventListener('click', () => {
+        game.reset();
+    });
+    
+
     cards.forEach(card => {
         card.addEventListener('click', () => {
             game.flipCard(card);
         });
     });
 
-};
-
+}
     
 ready();

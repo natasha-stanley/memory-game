@@ -17,7 +17,7 @@ body {
 
 .page-title {
     font-family: 'Libre Barcode 128 Text';
-    text-shadow: 0px 0px 40px lightgreen;
+    text-shadow: 0px 0px 40px green;
     font-size: 3em;
     font-weight: normal;
     padding: 20px;
@@ -47,7 +47,6 @@ body {
 
 .info-overlay p {
     flex-direction: column;
-    border: 1px solid green;
     padding: 5px;
 }
 
@@ -59,6 +58,26 @@ body {
     -moz-animation: info-grow 500ms forwards;
     -o-animation: info-grow 500ms forwards;
     -ms-animation: info-grow 500ms forwards;
+}
+
+.reset-button {
+    text-shadow: 0px 0px 30px green;
+    color: green;
+    position: fixed;
+    top: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-top: 70px;
+    padding-right: 20px;
+    font-size: 1.5em;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    color: white;
 }
 
 .welcome-overlay {
@@ -75,7 +94,6 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex-direction: column;
     animation: none !important;
     z-index: 998;
     animation: fadeOut 1s backwards;
@@ -118,12 +136,13 @@ body {
 
 .welcome-button {
     margin-top: 100px;
-    height: 40px;
-    width: 120px;
-    background-color: green;
+    height: 40px !important;
+    width: 120px !important;
+    font-size: 0.7em !important;
+    background-color: green !important;
     font-family: 'Syne Mono';
     font-weight: bolder;
-    color: white;
+    color: white !important;
     border: none;
     border-radius: 5%;
     justify-content: space-around;
@@ -132,8 +151,8 @@ body {
 }
 
 .welcome-button:hover {
-    background-color: white;
-    color: green;
+    background-color: white !important;
+    color: green !important;
     box-shadow: 0px 0px 30px green;
     border: 2px solid green;
 }
@@ -162,19 +181,19 @@ body {
 
 .rules {
     display: none;
-    flex-direction: column;
     background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    font-size: 1em;
+    font-size: 0.9em;
     text-shadow: 0px 0px 40px green;
     position: fixed;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
+    padding: -10px;
     animation: none !important;
     z-index: 998;
 }
@@ -183,10 +202,14 @@ body {
     display: flex;
 }
 
-.rules-stars p {
-    flex-direction: column;
+.stars {
+    margin: 0 auto 0 auto;
+    padding-top: 10px;
+    padding: 10px;
+    width: 70%;
+    margin-top: 10px;
+    text-align: center;
     border: 1px solid green;
-    padding: 5px;
 }
 
 .level-overlay-tag {
@@ -351,7 +374,7 @@ body {
 }
 
 .overlay-text {
-    font-size: 2em;
+    font-size: 1em;
     text-shadow: 0px 0px 30px green;
     display: none;
     position: fixed;
@@ -366,6 +389,15 @@ body {
     flex-direction: column;
 }
 
+.fname {
+    text-shadow: 0px 0px 30px green;
+}
+
+.fname-congrats {
+    text-transform: uppercase;
+    text-shadow: 0px 0px 30px green;
+}
+
 .overlay-button {
     display: flex;
     height: 50px;
@@ -378,6 +410,7 @@ body {
     justify-content: space-around;
     align-items: center;
     margin: 10px;
+    cursor: pointer;
 }
 
 .overlay-button:hover {
@@ -406,13 +439,14 @@ body {
 }
 
 
+
 /*-----for media queries-----*/
 
-
+/*-----mobile styling-----*/
 @media (min-width: 750px) {
 
     .page-title {
-        text-shadow: 0px 0px 10px rgb(0, 214, 0); 
+        text-shadow: 0px 0px 10px green; 
         font-size: 4em;
     }
 
@@ -425,7 +459,7 @@ body {
         left: 0;
         right: 0;
         bottom: 0;
-        font-size: 2em;
+        font-size: 1.5em;
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -436,7 +470,6 @@ body {
     
     .info-overlay p {
         flex-direction: column;
-        border: 1px solid green;
         padding: 5px;
     }
     
@@ -480,13 +513,13 @@ body {
 
     .welcome-button {
         margin-top: 100px;
-        height: 60px;
-        width: 160px;
-        font-size: 0.6em;
-        background-color: green;
+        height: 50px !important;
+        width: 150px !important;
+        font-size: 0.6em !important;
+        background-color: green !important;
         font-family: 'Syne Mono';
         font-weight: bolder;
-        color: white;
+        color: white !important;
         border: none;
         border-radius: 5%;
         justify-content: space-around;
@@ -495,8 +528,8 @@ body {
     }
     
     .welcome-button:hover {
-        background-color: white;
-        color: green;
+        background-color: white !important;
+        color: green !important;
         box-shadow: 0px 0px 30px green;
         border: 2px solid green;
     }
@@ -513,19 +546,19 @@ body {
 
     .rules {
         display: none;
-        flex-direction: column;
         background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        font-size: 1.4em;
+        font-size: 1.2em;
         text-shadow: 0px 0px 40px green;
         position: fixed;
         justify-content: center;
         align-items: center;
         text-align: center;
         flex-direction: column;
+        column-gap: 100px;
         animation: none !important;
         z-index: 998;
     }
@@ -534,16 +567,19 @@ body {
         display: flex;
     }
     
-    .rules-stars p {
-        flex-direction: column;
-        border: 1px solid green;
-        box-shadow: 0px 0px 10px green;
+    .stars {
+        margin: 0 auto 0 auto;
+        padding-top: 10px;
         padding: 10px;
+        width: 50%;
+        margin-top: 10px;
+        text-align: center;
+        border: 1px solid green;
     }
 
     .fa-star {
         padding: 5px;
-        align-items: left;
+        text-align: left;
     }
 
     .start-game {
@@ -586,7 +622,7 @@ body {
     }
 
     .overlay-text {
-        font-size: 3em;
+        font-size: 2.2em;
         text-shadow: 0px 0px 30px green;
         display: none;
         position: fixed;
@@ -596,14 +632,16 @@ body {
         bottom: 0;
         justify-content: center;
         align-items: center;
+        text-align: center;
         z-index: 100;
         flex-direction: column;
     }
-
+    
     .overlay-button {
         display: flex;
-        height: 75px;
-        width: 200px;
+        height: 50px;
+        width: 150px;
+        font-size: 0.5em;
         background-color: green;
         font-weight: bolder;
         color: white;
@@ -612,12 +650,32 @@ body {
         justify-content: space-around;
         align-items: center;
         margin: 10px;
+        cursor: pointer;
     }
     
     .overlay-button:hover {
         background-color: white;
         color: green;
         box-shadow: 0px 0px 30px green;
+    }
+
+    .overlay-button.visible {
+        display: flex;
+        animation: overlay-button-grow 500ms forwards;
+        -webkit-animation: overlay-button-grow 500ms forwards;
+        -moz-animation: overlay-button-grow 500ms forwards;
+        -o-animation: overlay-button-grow 500ms forwards;
+        -ms-animation: overlay-button-grow 500ms forwards;
+    }
+    
+    .overlay-text.visible {
+        display: flex;
+        flex-direction: column;
+        animation: overlay-grow 500ms forwards;
+        -webkit-animation: overlay-grow 500ms forwards;
+        -moz-animation: overlay-grow 500ms forwards;
+        -o-animation: overlay-grow 500ms forwards;
+        -ms-animation: overlay-grow 500ms forwards;
     }
 
     .sfx {
@@ -632,6 +690,106 @@ body {
         cursor: pointer;
     }
 
+}
+
+/*-----landscape tablet styling-----*/
+@media only screen and (min-device-width : 700px) and (max-device-width : 1280px) and (orientation : landscape) {
+
+
+    .welcome-overlay {
+        display: flex;
+        flex-direction: column;
+        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 2em;
+        text-shadow: 0px 0px 40px green;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        animation: none !important;
+        z-index: 998;
+    }
+
+    .welcome-tag{
+        text-shadow: 0px 0px 10px green; 
+    }
+
+    .welcome-overlay label {
+        font-weight: bolder;
+        font-size: 0.6em;
+    }
+
+    .welcome-button {
+        margin-top: 100px;
+        height: 50px;
+        width: 150px;
+        font-size: 0.6em;
+        background-color: green !important;
+        font-family: 'Syne Mono';
+        font-weight: bolder;
+        color: white !important;
+        border: none;
+        border-radius: 5%;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .rules {
+        display: none;
+        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 1em;
+        text-shadow: 0px 0px 40px green;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        column-gap: 100px;
+        animation: none !important;
+        z-index: 998;
+    }
+    
+    .rules.visible {
+        display: flex;
+    }
+    
+    .stars {
+        margin: 0 auto 0 auto;
+        padding-top: 10px;
+        padding: 10px;
+        width: 70%;
+        margin-top: 10px;
+        text-align: center;
+        border: 1px solid green;
+    }
+
+
+
+    .game-container {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-gap: 10px;
+        margin-top: 150px;
+        justify-content: center;
+        perspective: 500px;
+    }
+
+    .card {
+        height: 120px;
+        width: 80px;
+        margin: 5px;
+        border-radius: 5%;
+    }
 }
 
 
@@ -670,30 +828,18 @@ body {
     }
 }
 
-/*@keyframes info-grow {
-    from {
-        background: rgba(0, 0, 0, 0);
-        font-size: 0;
-    }
-    to {
-        background-color: black;
-        font-size: 1em;
-        color: green;
-    }
-}*/
-
 @keyframes info-grow {
     from {
         opacity: 0;
     }
     to {
-        opacity: 100;
+        opacity: 1;
     }
 }
 
 @keyframes fadeOut {
     from {
-        opacity: 100;
+        opacity: 1;
     }
     to {
         opacity: 0;
