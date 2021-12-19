@@ -194,6 +194,7 @@ class MixOrMatch {
         this.infoToggle = document.getElementById('toggle');
         this.musicToggle = document.getElementById('music-toggle');
         this.audioController = new AudioController();
+        this.paused = false;
         //this.myInterval = -1;
     }
 
@@ -269,13 +270,20 @@ class MixOrMatch {
 
     startCountDown() {
          return setInterval(() => {
-            this.timeRemaining--;
-            this.timer.innerText = this.timeRemaining;
-
+             if (!this.paused) {
+                this.timeRemaining--;
+                this.timer.innerText = this.timeRemaining;
+             }
+            
             this.infoToggle.addEventListener('click', () => {
-                //this.infoToggle.innerHTML = ('<i class="fas fa-question-circle"></i>');
-                clearInterval(this.countDown);
-                this.restartCountdown();
+                if (this.paused) {
+                    console.log('paused = false');
+                    this.paused = false;
+                    
+                } else {
+                    console.log('paused = true');
+                    this.paused = true;
+                }
             });
 
 
@@ -301,7 +309,7 @@ class MixOrMatch {
    }*/
 
 
-    restartCountdown() {
+    /*restartCountdown() {
         if(this.infoToggle.classList === ('visible')){
             clearInterval(this.countDown);
         } else {
@@ -314,11 +322,11 @@ class MixOrMatch {
             }, 1000);
         }
 
-        /*this.timeRemaining = setInterval(() => {
+        this.timeRemaining = setInterval(() => {
             this.timeRemaining++;
             this.timer.innerText = this.timeRemaining;
-        });*/
-    }
+        });
+    }*/
 
     gameOver() {
         clearInterval(this.countDown);
@@ -349,11 +357,11 @@ class MixOrMatch {
         }
     }
 
-    reset() {
+    /*reset() {
         clearInterval(this.countDown);
         this.timeRemaining = 100;
         this.startGame();
-    }
+    }*/
 
     shuffleCards() {
         for(let i = this.cardsArray.length - 1; i > 0; i--) {
@@ -368,13 +376,15 @@ class MixOrMatch {
     }
 }
 
+
+/*
 //for info overlay toggle
 let infoOverlay = document.getElementById('info-overlay');
 let infoButton = document.getElementById('toggle');
 infoButton.addEventListener('click', () => {
     infoOverlay.classList.toggle('visible');
 });
-
+*/
 
 /*
 //for reset game
