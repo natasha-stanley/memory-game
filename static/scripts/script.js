@@ -49,89 +49,37 @@ enterBTN.addEventListener('click', () => {
 });
 
 
+
+/*var bgMusic = {
+    scfiMusic: new Howl ({
+        src: ['static/audio/Sci-fi-Pulse-Loop.mp3']
+    })
+}*/
+
+
 //for audio controls
 class AudioController {
     constructor() {
-        this.bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
+        //this.bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
         this.flipSound = new Audio('static/audio/card-flip.mp3');
         this.matchSound = new Audio('static/audio/card-match.mp3');
         this.victorySound = new Audio('static/audio/game-win.mp3');
         this.gameOverSound = new Audio('static/audio/game-over.mp3');
-        this.gameConfirm = new Audio('static/audio/confirmation.mp3');
-        this.musicToggle = document.getElementById('music-toggle');
+        //this.gameConfirm = new Audio('static/audio/confirmation.mp3');
+        //this.musicToggle = document.getElementById('music-toggle');
         //this.playBTN = document.getElementById('music-toggle');
         //this.audio = document.getElementById('audio');
+        this.musicCTRL = document.getElementById('music-ctrl');
         this.count = 0;
+        //this.bgMusic.volume = 0.05;
         this.flipSound.volume = 0.15;
         this.matchSound.volume = 0.15;
         this.victorySound.volume = 0.15;
         this.gameOverSound.volume = 0.15;
     }
 
-    /*playMusic() {
-            if (this.count == 0) {
-                this.count = 1;
-                this.bgMusic.play();
-                this.bgMusic.volume = 0.05;
-                this.bgMusic.loop = true;
-                this.playBTN.innerHTML = ('<i class="fas fa-volume-up"></i>');
-            } else {
-                this.count = 1;
-                this.bgMusic.pause();
-                this.playBTN.innerHTML = ('<i class="fas fa-volume-mute"></i>');
-            }
-    }*/
-
-    /*start() {
-        this.bgMusic = this.bgMusic.pause();
-        this.flipSound = this.flipSound.pause();
-        this.matchSound = this.matchSound.pause();
-        this.victorySound = this.victorySound.pause();
-        this.gameOverSound = this.gameOverSound.pause();
-        if (this.count == 0){
-            this.count = 1;
-            this.bgMusic = this.bgMusic.play();
-            this.flipSound = this.flipSound.play();
-            this.matchSound = this.matchSound.play();
-            this.victorySound = this.victorySound.play();
-            this.gameOverSound = this.gameOverSound.play()
-            this.musicToggle.innerHTML = ('<i class="fas fa-volume-up"></i>');
-        } else {
-            this.count = 0;
-            this.bgMusic = this.bgMusic.pause();
-            this.flipSound = this.flipSound.pause();
-            this.matchSound = this.matchSound.pause();
-            this.victorySound = this.victorySound.pause();
-            this.gameOverSound = this.gameOverSound.pause();
-            this.musicToggle.innerHTML = ('<i class="fas fa-volume-mute"></i>');
-        };
-
-    }*/
-
-    /*toggleSFX() {
-        this.musicToggle.addEventListener('click', () => {
-            this.musicToggle.innerHTML = ('<i class="fas fa-volume-up"></i>');
-        });
-
-        if(this.musicToggle.innerHTML = ('<i class="fas fa-volume-mute"></i>')){
-            this.bgMusic.pause();
-            this.flipSound.pause();
-            this.matchSound.pause();
-            this.victorySound.pause();
-            this.gameOverSound.pause();
-        } else {
-            this.bgMusic.play();
-            this.flipSound.play();
-            this.matchSound.play();
-            this.victorySound.play();
-            this.gameOverSound.play();
-        }
-    }*/
-
-    /*pauseSFX() {
-        if(this.musicToggle.innerHTML = ('<i class="fas fa-volume-mute"></i>')) {
-            this.stopMusic();
-        }
+    /*startMusic() {
+        this.bgMusic.play();
     }*/
 
     stopMusic() {
@@ -139,7 +87,6 @@ class AudioController {
         this.flipSound.pause();
         this.matchSound.pause();
     }
-
 
     flip() {
         this.flipSound.play();
@@ -159,40 +106,80 @@ class AudioController {
         this.victorySound.play();
     }
 
-    confirm() {
-        this.gameConfirm.play();
-    }
-
     gameOver() {
         this.stopMusic();
         this.gameOverSound.play();
     }
-
-    
-
 }
 
+/*
+let musicMute = document.getElementById('music-mute');
+    let musicPlay = document.getElementById('music-play');
+function musicToggle() {
+    
+
+    musicPlay.addEventListener('click', () => {
+        musicPlay.classList.toggle('visible');
+        musicMute.classList.toggle('hidden');
+    });
+}*/
+
+
+/*
+//howler audio here
+
+var bgMusic = {
+    music = new Howl ({
+        src: 'static/audio/Sci-fi-Pulse-Loop.mp3'
+    })
+}
+
+var playBTN = document.getElementById('music-toggle');*/
 
 //for bgMusic toggle
 
 let audio = document.getElementById('audio');
-let playBTN = document.getElementById('music-toggle');
+let playBTN = document.getElementById('music-ctrl');
+//let muteBTN = document.getElementById('music-mute');
+let bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
 let count = 0;
 
 function playMusic() {
 
-    if(count == 0){
-        count = 1;
-        audio.play();
-        audio.volume = 0.05;
-        audio.loop = true;
-        playBTN.innerHTML = ('<i class="fas fa-volume-up"></i>');
-    } else {
-        count = 0;
-        audio.pause();
-        playBTN.innerHTML = ('<i class="fas fa-volume-mute"></i>');
-    }
+    playBTN.addEventListener('click', () => {
+        //muteBTN.classList.toggle('visible');
+        //playBTN.classList.toggle('visible');
+        if(count == 0){
+            count = 1;
+            bgMusic.play();
+            bgMusic.volume = 0.05;
+            bgMusic.loop = true;
+            playBTN.innerHTML = ('<i class="fas fa-volume-up"></i>');
+        } else {
+            count = 0;
+            bgMusic.pause();
+            playBTN.innerHTML = ('<i class="fas fa-volume-mute"></i>');
+        };
+    });
 }
+
+
+
+/*
+function playMusic() {
+    var playBTN = document.getElementById('music-play');
+    var muteBTN = document.getElementById('music-mute');
+
+    
+
+    muteBTN.addEventListener('click', () => {
+        muteBTN.classList.toggle('visible');
+        playBTN.classList.toggle('visible');
+        music.bgMusic.play();
+    })
+
+}
+*/
 
 
 //for game logic
@@ -207,7 +194,7 @@ class MixOrMatch {
         this.infoToggle = document.getElementById('toggle');
         this.musicToggle = document.getElementById('music-toggle');
         this.audioController = new AudioController();
-        this.myInterval = -1;
+        //this.myInterval = -1;
     }
 
     startGame() {
@@ -217,6 +204,7 @@ class MixOrMatch {
         this.matchedCards = [];
         this.busy = true;
         setTimeout(() => {
+            //this.audioController.startMusic();
             this.shuffleCards();
             this.countDown = this.startCountDown();
             this.busy = false;
@@ -434,7 +422,6 @@ function ready() {
     resetBTN.addEventListener('click', () => {
         game.reset();
     });
-    
 
     cards.forEach(card => {
         card.addEventListener('click', () => {

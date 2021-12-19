@@ -7,12 +7,13 @@
     <script src="https://kit.fontawesome.com/82e7ef2288.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <link href="static/styles/main-styles.css" rel="stylesheet">
     <title>Card Game</title>
 </head>
   <body>
     <div><h1 class="page-title">MATCH</h1></div>
-    <!--info overlay-->
+    <!------info overlay------>
     <div>
       <div id="toggle"><i class="far fa-question-circle"></i></div>
         <div id="info-overlay" class="info-overlay"><h1>Rules</h1>
@@ -31,11 +32,11 @@
           </p>
       </div>
     </div>
-    <!--reset button-->
+    <!------reset button------>
     <div class="reset-button">
-      <span id="reset" class="reset"><i class="fas fa-share-square"></i></span>
+      <span id="reset" class="reset"><i class="fas fa-undo"></i></span>
     </div>
-    <!--welcome section-->
+    <!------welcome section------>
     <div id="welcome-overlay" class="welcome-overlay ">
       <p class="welcome-tag">welcome player</p>
         <form id="get-username">
@@ -44,7 +45,7 @@
             <input type="submit" id="enter-button" class="welcome-button" value="enter" />
         </form>
     </div>
-    <!--rules section-->
+    <!------rules section------>
     <div id="rules" class="rules ">
       <h1>welcome <output id="fnameOutput" class="fname"></output></h1>
       <h2>rules</h2>
@@ -59,18 +60,18 @@
       </div>
       <button id="start-game" class="start-game">start game</button>
     </div>
-    <!--game over overlay-->
+    <!------game over overlay------>
     <div id="game-over-text" class="overlay-text">
       <p>GAME OVER</p>
       <span><button id="restart-gameover" class="overlay-button restart standard">retry?</button></span>
     </div>
-    <!--victory overlay-->
+    <!------victory overlay------>
     <div id="victory-text" class="overlay-text ">
       <p>CONGRATULATIONS <output id="fnameOutputCongrats"  class="fname-congrats"></output> </p>
       <p><output id="stats"></output></p>
       <span><button id="restart-victory" class="overlay-button">retry?</button></span>
     </div>
-    <!--game container-->
+    <!------game container------>
     <div class="game-container">
       <div class="game-info-container">
         <div class="game-info">
@@ -225,17 +226,18 @@
         </div>
       </div>
     </div>
-    <!--audio-->
-    <div class="sfx">
-      <audio id="audio">
+    <!------audio------>
+    <div >
+      <!--<audio id="audio">
         <source id="bg-music" src="static/audio/Sci-fi-Pulse-Loop.mp3" type="audio/mpeg">
-        <!--<source id="card-flip-sfx" src="static/audio/card-flip.mp3" type="audio/mpeg">
+        <source id="card-flip-sfx" src="static/audio/card-flip.mp3" type="audio/mpeg">
         <source id="card-match-sfx" src="static/audio/card-match.mp3" type="audio/mpeg">
         <source id="game-win-sfx" src="static/audio/game-win.mp3" type="audio/mpeg">
         <source id="game-over-sfx" src="static/audio/game-over.mp3" type="audio/mpeg">
         <source id="confirm-sfx" src="static/audio/confirmation.mp3" type="audio/mpeg">-->
       </audio>
-      <button id="music-toggle" class="sfx" onclick="playMusic()" ><i class="fas fa-volume-mute"></i></button>
+      <button id="music-ctrl" class="sfx "  onclick="playMusic()" ><i class="fas fa-volume-mute"></i></button>
+      <!--<button id="music-play" class="sfx " ><i class="fas fa-volume-up"></i></button>-->
     </div>
   <script src="static/scripts/script.js" async></script>
   </body>
