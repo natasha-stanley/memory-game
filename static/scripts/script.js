@@ -1,201 +1,147 @@
 "use strict";
 
-//const { faMicrochip } = require("@fortawesome/free-solid-svg-icons");
-
 /*jshint esversion: 6 */
 
+//-------------------------------------------------------------global variables
 
-//for welcome page and level selection
+let paused = false;
+let audio = document.getElementById('audio');
+let playBTN = document.getElementById('music-ctrl');
+let bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
+let muted = false;
+
+//-----------------------------------------------------------------welcome page
 function getName() {
-
     var name = document.getElementById('fname');
     var nameOutput = document.getElementById('fnameOutput');
     var enterBTN = document.getElementById('enter-button');
     var nameOutputVictory = document.getElementById('fnameOutputCongrats');
-
     enterBTN.addEventListener('click', storeData(), retrieveData(), false);
 
     $("#get-username").submit(function(e) {
         e.preventDefault(); //stop page refresh
     });
     
-
-    /*enterBTN.addEventListener('click', () => {
-        storeData();
-        retrieveData();
-        
-    });*/
-    
-
     function storeData() {
         localStorage.name = name.value;
     }
-
     function retrieveData() {
         nameOutput.innerHTML = localStorage.name;
         nameOutputVictory.innerHTML = localStorage.name;
     }
 }
 
-var enterBTN = document.getElementById('enter-button');
-var welcomeOverlay = document.getElementById('welcome-overlay');
-var rulesPage = document.getElementById('rules');
-
+let enterBTN = document.getElementById('enter-button');
+let welcomeOverlay = document.getElementById('welcome-overlay');
+let rulesPage = document.getElementById('rules');
 enterBTN.addEventListener('click', () => {
         getName();
         welcomeOverlay.classList.toggle('visible');
         rulesPage.classList.toggle('visible');
-
 });
 
 
+//----------------------------------------------------------------reset overlay
 
-/*var bgMusic = {
-    scfiMusic: new Howl ({
-        src: ['static/audio/Sci-fi-Pulse-Loop.mp3']
-    })
-}*/
+const resetOverlay = document.getElementById('reset-overlay');
+const resetBTN = document.getElementById('reset');
+resetBTN.addEventListener('click', () => {
+    resetOverlay.classList.toggle('visible');
+    paused = !paused;
+});
+
+//----------------------------------------------------------------rules overlay
+
+/*
+const hideReset = () => {
+    if (infoOverlay.style.display === "none") {
+        resetBTN.style.display = "flex"
+    } else {
+        resetBTN.style.display = "none"
+    }
+}
+*/
+
+const infoOverlay = document.getElementById('info-overlay');
+const infoButton = document.getElementById('toggle');
+infoButton.addEventListener('click', () => {
+    infoOverlay.classList.toggle('visible');
+    resetBTN.classList.toggle('hidden');
+    paused = !paused;
+});
+//infoButton.addEventListener('click', hideReset);
+
+//---------------------------------------------------------------audio controls
+const playMusic = () => {
+    if(muted){
+        muted = false;
+        bgMusic.play();
+        bgMusic.volume = 0.05;
+        bgMusic.loop = true;
+        playBTN.innerHTML = ('<i class="fas fa-volume-up"></i>');
+    } else {
+        muted = true;
+        bgMusic.pause();
+        playBTN.innerHTML = ('<i class="fas fa-volume-mute"></i>');
+    }
+};
+playBTN.addEventListener('click', playMusic);
 
 
-//for audio controls
 class AudioController {
     constructor() {
-        //this.bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
         this.flipSound = new Audio('static/audio/card-flip.mp3');
         this.matchSound = new Audio('static/audio/card-match.mp3');
         this.victorySound = new Audio('static/audio/game-win.mp3');
         this.gameOverSound = new Audio('static/audio/game-over.mp3');
-        //this.gameConfirm = new Audio('static/audio/confirmation.mp3');
-        //this.musicToggle = document.getElementById('music-toggle');
-        //this.playBTN = document.getElementById('music-toggle');
-        //this.audio = document.getElementById('audio');
-        this.musicCTRL = document.getElementById('music-ctrl');
-        this.count = 0;
-        //this.bgMusic.volume = 0.05;
         this.flipSound.volume = 0.15;
         this.matchSound.volume = 0.15;
         this.victorySound.volume = 0.15;
         this.gameOverSound.volume = 0.15;
     }
-
-    /*startMusic() {
-        this.bgMusic.play();
-    }*/
-
+   
     stopMusic() {
-        //this.bgMusic.pause();
         this.flipSound.pause();
         this.matchSound.pause();
     }
 
     flip() {
+        if (!muted) {
         this.flipSound.play();
-        /*if(this.musicToggle.innerHTML = ('<i class="fas fa-volume-mute"></i>')){
-            this.flipSound.pause();
-        } else {
-            this.flipSound.play();
-        }*/
+        }
     }
 
     match() {
+        if (!muted) {
         this.matchSound.play();
+        }
     }
 
     victory() {
+        if (!muted) {
         this.stopMusic();
         this.victorySound.play();
+        }
     }
 
     gameOver() {
+        if (!muted) {
         this.stopMusic();
         this.gameOverSound.play();
+        }
     }
 }
 
-/*
-let musicMute = document.getElementById('music-mute');
-    let musicPlay = document.getElementById('music-play');
-function musicToggle() {
-    
-
-    musicPlay.addEventListener('click', () => {
-        musicPlay.classList.toggle('visible');
-        musicMute.classList.toggle('hidden');
-    });
-}*/
-
-
-/*
-//howler audio here
-
-var bgMusic = {
-    music = new Howl ({
-        src: 'static/audio/Sci-fi-Pulse-Loop.mp3'
-    })
-}
-
-var playBTN = document.getElementById('music-toggle');*/
-
-//for bgMusic toggle
-
-let audio = document.getElementById('audio');
-let playBTN = document.getElementById('music-ctrl');
-//let muteBTN = document.getElementById('music-mute');
-let bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
-let count = 0;
-
-function playMusic() {
-
-    playBTN.addEventListener('click', () => {
-        //muteBTN.classList.toggle('visible');
-        //playBTN.classList.toggle('visible');
-        if(count == 0){
-            count = 1;
-            bgMusic.play();
-            bgMusic.volume = 0.05;
-            bgMusic.loop = true;
-            playBTN.innerHTML = ('<i class="fas fa-volume-up"></i>');
-        } else {
-            count = 0;
-            bgMusic.pause();
-            playBTN.innerHTML = ('<i class="fas fa-volume-mute"></i>');
-        };
-    });
-}
-
-
-
-/*
-function playMusic() {
-    var playBTN = document.getElementById('music-play');
-    var muteBTN = document.getElementById('music-mute');
-
-    
-
-    muteBTN.addEventListener('click', () => {
-        muteBTN.classList.toggle('visible');
-        playBTN.classList.toggle('visible');
-        music.bgMusic.play();
-    })
-
-}
-*/
-
-
-//for game logic
+//------------------------------------------------------------------game logic
 class MixOrMatch {
     constructor(totalTime, cards) {
         this.cardsArray = cards;
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
-        //this.totalClicks = totalClicks;
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
-        this.infoToggle = document.getElementById('toggle');
-        this.musicToggle = document.getElementById('music-toggle');
+        this.stats = document.getElementById('stats');
         this.audioController = new AudioController();
-        this.paused = false;
-        //this.myInterval = -1;
     }
 
     startGame() {
@@ -205,7 +151,6 @@ class MixOrMatch {
         this.matchedCards = [];
         this.busy = true;
         setTimeout(() => {
-            //this.audioController.startMusic();
             this.shuffleCards();
             this.countDown = this.startCountDown();
             this.busy = false;
@@ -213,7 +158,6 @@ class MixOrMatch {
         this.hideCards();
         this.timer.innerHTML = this.timeRemaining;
         this.ticker.innerHTML = this.totalClicks;
-
     }
     
     hideCards() {
@@ -229,7 +173,6 @@ class MixOrMatch {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             cards.classList.add('visible');
-
             if(this.cardToCheck)
                 this.checkForCardMatch(cards);
             else
@@ -270,63 +213,14 @@ class MixOrMatch {
 
     startCountDown() {
          return setInterval(() => {
-             if (!this.paused) {
+             if (!paused) {
                 this.timeRemaining--;
                 this.timer.innerText = this.timeRemaining;
              }
-            
-            this.infoToggle.addEventListener('click', () => {
-                if (this.paused) {
-                    console.log('paused = false');
-                    this.paused = false;
-                    
-                } else {
-                    console.log('paused = true');
-                    this.paused = true;
-                }
-            });
-
-
             if(this.timeRemaining === 0)
                 this.gameOver();
             }, 1000);
     }
-
-    /*startCountDown() {
-        this.infoToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            if(this.myInterval == -1) {
-                this.myInterval = setInterval(() => {
-                    this.myInterval = 0;
-                    this.timeRemaining--;
-                    this.timer.innerText = this.timeRemaining;
-                }, 1000);
-            } else {
-                clearInterval(this.countDown);
-                this.myInterval = -1;
-            }
-        });
-   }*/
-
-
-    /*restartCountdown() {
-        if(this.infoToggle.classList === ('visible')){
-            clearInterval(this.countDown);
-        } else {
-            return setInterval(() => {
-                this.timeRemaining--;
-                this.timer.innerText = this.timeRemaining;
-            
-            if(this.timeRemaining === 0)
-                this.gameOver();
-            }, 1000);
-        }
-
-        this.timeRemaining = setInterval(() => {
-            this.timeRemaining++;
-            this.timer.innerText = this.timeRemaining;
-        });
-    }*/
 
     gameOver() {
         clearInterval(this.countDown);
@@ -339,29 +233,29 @@ class MixOrMatch {
         this.audioController.victory();
         getName();
         document.getElementById('victory-text').classList.add('visible');
-        if (this.totalTime >= 70 && this.totalTime <= 90 || this.totalClicks <= 30 && this.totalClicks >= 10) {
-            document.getElementById('stats').innerHTML = 
+        if (this.totalTime >= 70 && this.totalTime <= 90 || this.totalClicks <= 30 && this.totalClicks >= 5) {
+            this.stats.innerHTML = 
             `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
             '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
-        } else if (this.totalTime >= 50 && this.totalTime <= 70 && this.totalClicks <= 40 && this.totalClicks >= 30) {
-            document.getElementById('stats').innerHTML = 
+        } else if (this.totalTime >= 60 && this.totalTime <= 69 || this.totalClicks <= 40 && this.totalClicks >= 31) {
+            this.stats.innerHTML = 
             `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
             '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
-        } else if (this.totalTime >= 50 && this.totalTime <= 70 && this.totalClicks <= 50 && this.totalClicks >= 40) {
-            document.getElementById('stats').innerHTML = 
+        } else if (this.totalTime >= 50 && this.totalTime <= 59 || this.totalClicks <= 50 && this.totalClicks >= 41) {
+            this.stats.innerHTML = 
             `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
             '<i class="fas fa-star">';
         } else {
-            document.getElementById('stats').innerHTML = 
+            this.stats.innerHTML = 
             `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
         }
     }
 
-    /*reset() {
+    reset() {
         clearInterval(this.countDown);
-        this.timeRemaining = 100;
+        paused = !paused;
         this.startGame();
-    }*/
+    }
 
     shuffleCards() {
         for(let i = this.cardsArray.length - 1; i > 0; i--) {
@@ -376,34 +270,9 @@ class MixOrMatch {
     }
 }
 
-
-/*
-//for info overlay toggle
-let infoOverlay = document.getElementById('info-overlay');
-let infoButton = document.getElementById('toggle');
-infoButton.addEventListener('click', () => {
-    infoOverlay.classList.toggle('visible');
-});
-*/
-
-/*
-//for reset game
-let resetBTN = document.getElementById('reset');
-let cards = Array.from(document.getElementsByClassName('card'));
-let newGame = new MixOrMatch(100, cards);
-
-resetBTN.addEventListener('click', () => {
-    newGame.reset();
-});
-*/
-
-
-
-
-
+//---------------------------------------------------------------readying game
 function ready() {
 
-    //let gameCard = document.getElementById('standard-game');
     let rulesPage = document.getElementById('rules');
     let gameOver = document.getElementById('game-over-text');
     let victory = document.getElementById('victory-text');
@@ -411,7 +280,8 @@ function ready() {
     let restartV = document.getElementById('restart-victory');
     let cards = Array.from(document.getElementsByClassName('card'));
     let startGame = document.getElementById('start-game');
-    let resetBTN = document.getElementById('reset');
+    let resetBTN = document.getElementById('reset-game');
+    let contGame = document.getElementById('continue-game')
     let game = new MixOrMatch(100, cards);
 
     startGame.addEventListener('click', () => {
@@ -430,7 +300,13 @@ function ready() {
     });
 
     resetBTN.addEventListener('click', () => {
+        resetOverlay.classList.toggle('visible');
         game.reset();
+    });
+
+    contGame.addEventListener('click', () => {
+        resetOverlay.classList.toggle('visible');
+        paused = !paused;
     });
 
     cards.forEach(card => {
@@ -438,7 +314,9 @@ function ready() {
             game.flipCard(card);
         });
     });
-
 }
     
 ready();
+
+
+

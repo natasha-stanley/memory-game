@@ -7,16 +7,17 @@
     <script src="https://kit.fontawesome.com/82e7ef2288.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <link href="static/styles/main-styles.css" rel="stylesheet">
-    <title>Card Game</title>
+    <title>MATCH</title>
 </head>
   <body>
+    <!--------------------------------------------------------game title-->
     <div><h1 class="page-title">MATCH</h1></div>
-    <!------info overlay------>
+    <!------------------------------------------------------info overlay-->
     <div>
       <div id="toggle"><i class="far fa-question-circle"></i></div>
-        <div id="info-overlay" class="info-overlay"><h1>Rules</h1>
+        <div id="info-overlay" class="info-overlay">
+          <h1>Rules</h1>
           <h4>Click on a card and then match it to its corresponding icon. Match all to win.</h4>
           <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             <br>
@@ -32,11 +33,16 @@
           </p>
       </div>
     </div>
-    <!------reset button------>
-    <div class="reset-button">
-      <span id="reset" class="reset"><i class="fas fa-undo"></i></span>
+    <!-----------------------------------------------------reset overlay-->
+    <div>
+      <div id="reset"><i class="fas fa-undo "></i></div>
+      <div id="reset-overlay" class="reset-overlay">
+        <p>Are you sure you want to reset your current game?</p>
+        <button id="reset-game" class="overlay-button">yes, reset</button>
+        <button id="continue-game" class="overlay-button">no, continue</button>
+      </div>
     </div>
-    <!------welcome section------>
+    <!---------------------------------------------------welcome section-->
     <div id="welcome-overlay" class="welcome-overlay ">
       <p class="welcome-tag">welcome player</p>
         <form id="get-username">
@@ -45,7 +51,7 @@
             <input type="submit" id="enter-button" class="welcome-button" value="enter" />
         </form>
     </div>
-    <!------rules section------>
+    <!-----------------------------------------------------rules section-->
     <div id="rules" class="rules ">
       <h1>welcome <output id="fnameOutput" class="fname"></output></h1>
       <h2>rules</h2>
@@ -54,33 +60,36 @@
         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
           <p>match all the cards in under 30 seconds and 30 flips</p></div>
         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <p>match all the cards in under 50 seconds and 40 flips</p></div>
+          <p>match all the cards in under 40 seconds and 40 flips</p></div>
         <div class="stars"><i class="fas fa-star"></i>
           <p>match all the cards in under 50 seconds and 50 flips</p></div>
       </div>
       <button id="start-game" class="start-game">start game</button>
     </div>
-    <!------game over overlay------>
+    <!-------------------------------------------------game over overlay-->
     <div id="game-over-text" class="overlay-text">
       <p>GAME OVER</p>
       <span><button id="restart-gameover" class="overlay-button restart standard">retry?</button></span>
     </div>
-    <!------victory overlay------>
+    <!---------------------------------------------------victory overlay-->
     <div id="victory-text" class="overlay-text ">
       <p>CONGRATULATIONS <output id="fnameOutputCongrats"  class="fname-congrats"></output> </p>
       <p><output id="stats"></output></p>
       <span><button id="restart-victory" class="overlay-button">retry?</button></span>
     </div>
-    <!------game container------>
+    <!----------------------------------------------------game container-->
     <div class="game-container">
       <div class="game-info-container">
         <div class="game-info">
+          <!--countdown timer-->
           <span id="time-remaining">100</span> Time
         </div>
         <div class="game-info">
+          <!--flip counter-->
           <span id="flips" class="flips">0</span> Flips
         </div>
       </div>
+      <!---------------------------------------------------------cards-->
       <div class="card">
         <div class="card-back card-face">
           <img class="card-barcode card-barcode-bottom" src="static/images/cards/card-back-1-mob.png" alt="card-barcode">
@@ -226,20 +235,12 @@
         </div>
       </div>
     </div>
-    <!------audio------>
+    <!-------------------------------------------------------------audio-->
     <div >
-      <!--<audio id="audio">
-        <source id="bg-music" src="static/audio/Sci-fi-Pulse-Loop.mp3" type="audio/mpeg">
-        <source id="card-flip-sfx" src="static/audio/card-flip.mp3" type="audio/mpeg">
-        <source id="card-match-sfx" src="static/audio/card-match.mp3" type="audio/mpeg">
-        <source id="game-win-sfx" src="static/audio/game-win.mp3" type="audio/mpeg">
-        <source id="game-over-sfx" src="static/audio/game-over.mp3" type="audio/mpeg">
-        <source id="confirm-sfx" src="static/audio/confirmation.mp3" type="audio/mpeg">-->
-      </audio>
-      <button id="music-ctrl" class="sfx "  onclick="playMusic()" ><i class="fas fa-volume-mute"></i></button>
-      <!--<button id="music-play" class="sfx " ><i class="fas fa-volume-up"></i></button>-->
+      <button id="music-ctrl" class="sfx "><i class="fas fa-volume-mute"></i></button>
     </div>
-  <script src="static/scripts/script.js" async></script>
+  <!--------------------------------------------------main js script src-->
+  <script src="static/scripts/script.js"></script>
   </body>
 </html>
 

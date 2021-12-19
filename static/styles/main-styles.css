@@ -28,6 +28,23 @@ body {
     z-index: 999;
 }
 
+.fa-question-circle {
+    color:green;
+    font-size: 2em;
+    position: absolute;
+    display: unset;
+    top: 30px;
+    right: 20px;
+    text-shadow: 0px 0px 20px green;
+    cursor: pointer;
+    z-index: 97;
+}
+
+.fa-question-circle:hover {
+    text-shadow: 0px 0px 40px white;
+    color: white;
+}
+
 .info-overlay {
     display: none;
     text-shadow: 0px 0px 30px green;
@@ -42,7 +59,7 @@ body {
     text-align: center;
     flex-direction: column;
     padding-top: 50px;
-    z-index: 99;
+    z-index: 10;
 }
 
 .info-overlay p {
@@ -52,7 +69,6 @@ body {
 
 .info-overlay.visible {
     display: flex;
-    flex-direction: column;
     animation: info-grow 500ms forwards;
     -webkit-animation: info-grow 500ms forwards;
     -moz-animation: info-grow 500ms forwards;
@@ -60,7 +76,8 @@ body {
     -ms-animation: info-grow 500ms forwards;
 }
 
-.reset-button {
+.fa-undo {
+    display: flex;
     text-shadow: 0px 0px 30px green;
     color: green;
     position: fixed;
@@ -69,15 +86,75 @@ body {
     justify-content: center;
     align-items: center;
     text-align: right;
-    padding-top: 80px;
-    padding-right: 25px;
+    margin-top: 75px;
+    margin-right: 23px;
     font-size: 1.5em;
     z-index: 99;
     cursor: pointer;
 }
 
-.reset-button:hover {
+.fa-undo:hover {
+    text-shadow: 0px 0px 40px green;
     color: white;
+}
+
+.fa-undo.hidden {
+    z-index: 90;
+}
+
+.reset-overlay {
+    display: none;
+    text-shadow: 0px 0px 30px green;
+    background-color: rgba(0, 0, 0, 0.829);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding-top: 50px;
+    z-index: 98;
+}
+
+.reset-overlay.visible {
+    display: flex;
+    animation: info-grow 500ms forwards;
+    -webkit-animation: info-grow 500ms forwards;
+    -moz-animation: info-grow 500ms forwards;
+    -o-animation: info-grow 500ms forwards;
+    -ms-animation: info-grow 500ms forwards;
+}
+
+
+.sfx {
+    display: flex;
+    z-index: 1000;
+    height: 60px;
+    width: 60px;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1.5em;
+    color: green;
+    border: none;
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    cursor: pointer;
+}
+
+.sfx:hover {
+    text-shadow: 0px 0px 40px white;
+    color: white;
+}
+
+.sfx.visible {
+    display: flex;
+}
+
+.sfx.hidden {
+    display: none;
 }
 
 .welcome-overlay {
@@ -95,7 +172,6 @@ body {
     align-items: center;
     text-align: center;
     z-index: 998;
-    
 }
 
 .welcome-tag{
@@ -223,51 +299,6 @@ body {
     font-size: 1.1em;
     font-weight: bold;
     text-shadow: 0px 0px 40px green;
-}
-
-.fa-question-circle {
-    color:green;
-    font-size: 2em;
-    position: absolute;
-    display: unset;
-    top: 30px;
-    right: 20px;
-    text-shadow: 0px 0px 20px green;
-    cursor: pointer;
-    z-index: 100;
-}
-
-.fa-question-circle:hover {
-    text-shadow: 0px 0px 40px white;
-    color: white;
-}
-
-.sfx {
-    display: flex;
-    z-index: 1000;
-    height: 60px;
-    width: 60px;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 1.5em;
-    color: green;
-    border: none;
-    position: fixed;
-    bottom: 10px;
-    left: 20px;
-    cursor: pointer;
-}
-
-.sfx:hover {
-    text-shadow: 0px 0px 40px white;
-    color: white;
-}
-
-.sfx.visible {
-    display: flex;
-}
-
-.sfx.hidden {
-    display: none;
 }
 
 .game-container {
@@ -486,7 +517,6 @@ body {
         text-align: center;
         flex-direction: column;
         padding-top: 50px;
-        z-index: 99;
     }
     
     .info-overlay p {
@@ -496,12 +526,6 @@ body {
     
     .info-overlay.visible {
         display: flex;
-        flex-direction: column;
-        animation: info-grow 500ms forwards;
-        -webkit-animation: info-grow 500ms forwards;
-        -moz-animation: info-grow 500ms forwards;
-        -o-animation: info-grow 500ms forwards;
-        -ms-animation: info-grow 500ms forwards;
     }
 
     .welcome-overlay {
@@ -519,8 +543,6 @@ body {
         align-items: center;
         text-align: center;
         flex-direction: column;
-        animation: none !important;
-        z-index: 998;
     }
 
     .welcome-tag{
@@ -581,7 +603,6 @@ body {
         flex-direction: column;
         column-gap: 100px;
         animation: none !important;
-        z-index: 998;
     }
     
     .rules.visible {
@@ -603,6 +624,38 @@ body {
         text-align: left;
     }
 
+    .reset-overlay {
+        display: none;
+        text-shadow: 0px 0px 30px green;
+        background-color: rgba(0, 0, 0, 0.829);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 50px;
+        font-size: 1.5em;
+    } 
+    
+    .fa-undo {
+        text-shadow: 0px 0px 30px green;
+        color: green;
+        position: fixed;
+        top: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: right;
+        margin-top: 75px;
+        margin-right: 23px;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+    
     .start-game {
         margin: 30px;
         height: 60px;
@@ -654,7 +707,6 @@ body {
         justify-content: center;
         align-items: center;
         text-align: center;
-        z-index: 100;
         flex-direction: column;
     }
     
@@ -700,7 +752,6 @@ body {
     }
 
     .sfx {
-        z-index: 1000;
         background-color: rgba(0, 0, 0, 0);
         font-size: 2em;
         color: green;
@@ -732,7 +783,6 @@ body {
         text-align: center;
         flex-direction: column;
         animation: none !important;
-        z-index: 998;
     }
 
     .welcome-tag{
@@ -775,8 +825,6 @@ body {
         text-align: center;
         flex-direction: column;
         column-gap: 100px;
-        animation: none !important;
-        z-index: 998;
     }
     
     .rules.visible {
@@ -792,8 +840,6 @@ body {
         text-align: center;
         border: 1px solid green;
     }
-
-
 
     .game-container {
         display: grid;
@@ -843,7 +889,6 @@ body {
         text-align: center;
         flex-direction: column;
         padding-top: 40px;
-        z-index: 99;
     }
     
     .info-overlay p {
@@ -860,10 +905,9 @@ body {
         right: 20px;
         text-shadow: 0px 0px 20px green;
         cursor: pointer;
-        z-index: 100;
     }
     
-    .reset-button {
+    .fa-undo {
         text-shadow: 0px 0px 30px green;
         color: green;
         position: fixed;
@@ -872,13 +916,12 @@ body {
         justify-content: center;
         align-items: center;
         text-align: right;
-        padding-top: 70px;
-        padding-right: 20px;
-        font-size: 1em;
-        z-index: 99;
+        margin-top: 73px;
+        margin-right: 23px;
+        font-size: 1.1em;
         cursor: pointer;
     }
-    
+
     .welcome-overlay {
         display: flex;
         flex-direction: column;
@@ -894,7 +937,6 @@ body {
         text-align: center;
         flex-direction: column;
         animation: none !important;
-        z-index: 998;
     }
 
     .welcome-tag{
@@ -985,8 +1027,6 @@ body {
         margin-left: 10px;
         flex-direction: column;
         column-gap: 100px;
-        animation: none !important;
-        z-index: 998;
     }
     
     .rules.visible {
@@ -1027,8 +1067,8 @@ body {
     
     .card {
         position: relative;
-        height: 90px;
-        width: 65px;
+        height: 85px;
+        width: 60px;
     }
 
     .card-face {
@@ -1055,7 +1095,6 @@ body {
         justify-content: center;
         align-items: center;
         text-align: center;
-        z-index: 100;
         flex-direction: column;
     }
 
