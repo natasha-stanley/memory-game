@@ -37,7 +37,7 @@ body {
     right: 20px;
     text-shadow: 0px 0px 20px green;
     cursor: pointer;
-    z-index: 97;
+    z-index: 99;
 }
 
 .fa-question-circle:hover {
@@ -59,7 +59,7 @@ body {
     text-align: center;
     flex-direction: column;
     padding-top: 50px;
-    z-index: 10;
+    z-index: 98;
 }
 
 .info-overlay p {
@@ -89,17 +89,13 @@ body {
     margin-top: 75px;
     margin-right: 23px;
     font-size: 1.5em;
-    z-index: 99;
+    z-index: 97;
     cursor: pointer;
 }
 
 .fa-undo:hover {
     text-shadow: 0px 0px 40px green;
     color: white;
-}
-
-.fa-undo.hidden {
-    z-index: 90;
 }
 
 .reset-overlay {
@@ -116,7 +112,7 @@ body {
     text-align: center;
     flex-direction: column;
     padding-top: 50px;
-    z-index: 98;
+    z-index: 99;
 }
 
 .reset-overlay.visible {
@@ -128,7 +124,6 @@ body {
     -ms-animation: info-grow 500ms forwards;
 }
 
-
 .sfx {
     display: flex;
     z-index: 1000;
@@ -139,7 +134,7 @@ body {
     color: green;
     border: none;
     position: fixed;
-    bottom: 10px;
+    bottom: -5px;
     left: 20px;
     cursor: pointer;
 }
@@ -181,11 +176,11 @@ body {
 
 .welcome-overlay.visible {
     display: none;
-    animation: fade-out 500ms forwards;
-    -webkit-animation: fade-out 500ms forwards;
-    -moz-animation: fade-out 500ms forwards;
-    -o-animation: fade-out 500ms forwards;
-    -ms-animation: fade-out 500ms forwards;
+    /*animation: fadeOut 500ms backwards;
+    -webkit-animation: fadeOut 500ms backwards;
+    -moz-animation: fadeOut 500ms backwards;
+    -o-animation: fadeOut 500ms backwards;
+    -ms-animation: fadeOut 500ms backwards;*/
 }
 
 .welcome-overlay label {
@@ -426,7 +421,7 @@ body {
 }
 
 .overlay-text {
-    font-size: 1em;
+    font-size: 1.3em;
     text-shadow: 0px 0px 30px green;
     display: none;
     position: fixed;
@@ -473,11 +468,11 @@ body {
 
 .overlay-button.visible {
     display: flex;
-    animation: overlay-button-grow 500ms forwards;
+    /*animation: overlay-button-grow 500ms forwards;
     -webkit-animation: overlay-button-grow 500ms forwards;
     -moz-animation: overlay-button-grow 500ms forwards;
     -o-animation: overlay-button-grow 500ms forwards;
-    -ms-animation: overlay-button-grow 500ms forwards;
+    -ms-animation: overlay-button-grow 500ms forwards;*/
 }
 
 .overlay-text.visible {
@@ -922,6 +917,24 @@ body {
         cursor: pointer;
     }
 
+    .reset-overlay {
+        display: none;
+        text-shadow: 0px 0px 30px green;
+        background-color: rgba(0, 0, 0, 0.829);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 50px;
+        font-size: 1.1em;
+        z-index: 99;
+    }
+
     .welcome-overlay {
         display: flex;
         flex-direction: column;
@@ -1156,7 +1169,7 @@ body {
     }
 }
 
-@keyframes overlay-button-grow {
+/*@keyframes overlay-button-grow {
     from {
         background: rgba(0, 0, 0, 0);
         font-size: 0;
@@ -1165,7 +1178,7 @@ body {
         background-color: green;
         font-size: 0;
     }
-}
+}*/
 
 @keyframes info-grow {
     from {
@@ -1176,13 +1189,27 @@ body {
     }
 }
 
-@keyframes fade-out {
+/*
+@keyframes fadeOut {
     0% {
+        opacity: 1;
         display: flex;
     }
     100% {
+        opacity: 0;
         display: none;
     }
 }
 
+@-moz-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        display: flex;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+*/
 

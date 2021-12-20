@@ -9,6 +9,7 @@ let audio = document.getElementById('audio');
 let playBTN = document.getElementById('music-ctrl');
 let bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
 let muted = false;
+let enterBTN = document.getElementById('enter-button');
 
 //-----------------------------------------------------------------welcome page
 function getName() {
@@ -31,7 +32,6 @@ function getName() {
     }
 }
 
-let enterBTN = document.getElementById('enter-button');
 let welcomeOverlay = document.getElementById('welcome-overlay');
 let rulesPage = document.getElementById('rules');
 enterBTN.addEventListener('click', () => {
@@ -39,7 +39,6 @@ enterBTN.addEventListener('click', () => {
         welcomeOverlay.classList.toggle('visible');
         rulesPage.classList.toggle('visible');
 });
-
 
 //----------------------------------------------------------------reset overlay
 
@@ -52,32 +51,25 @@ resetBTN.addEventListener('click', () => {
 
 //----------------------------------------------------------------rules overlay
 
-/*
-const hideReset = () => {
-    if (infoOverlay.style.display === "none") {
-        resetBTN.style.display = "flex"
-    } else {
-        resetBTN.style.display = "none"
-    }
-}
-*/
-
 const infoOverlay = document.getElementById('info-overlay');
 const infoButton = document.getElementById('toggle');
 infoButton.addEventListener('click', () => {
     infoOverlay.classList.toggle('visible');
-    resetBTN.classList.toggle('hidden');
     paused = !paused;
 });
-//infoButton.addEventListener('click', hideReset);
 
 //---------------------------------------------------------------audio controls
+
+//-------------------------------bg music and icon controls
+
+bgMusic.volume = 0.03;
+bgMusic.loop = true;
+enterBTN.addEventListener('click', () => {bgMusic.play();})
+
 const playMusic = () => {
     if(muted){
         muted = false;
         bgMusic.play();
-        bgMusic.volume = 0.05;
-        bgMusic.loop = true;
         playBTN.innerHTML = ('<i class="fas fa-volume-up"></i>');
     } else {
         muted = true;
@@ -87,7 +79,7 @@ const playMusic = () => {
 };
 playBTN.addEventListener('click', playMusic);
 
-
+//-------------------------------------------sfx controls
 class AudioController {
     constructor() {
         this.flipSound = new Audio('static/audio/card-flip.mp3');
@@ -99,31 +91,31 @@ class AudioController {
         this.victorySound.volume = 0.15;
         this.gameOverSound.volume = 0.15;
     }
-   
+//--------------------------------stop music  
     stopMusic() {
         this.flipSound.pause();
         this.matchSound.pause();
     }
-
+//-----------------------------flip card sfx
     flip() {
         if (!muted) {
         this.flipSound.play();
         }
     }
-
+//---------------------------cards match sfx
     match() {
         if (!muted) {
         this.matchSound.play();
         }
     }
-
+//-------------------------------victory sfx
     victory() {
         if (!muted) {
         this.stopMusic();
         this.victorySound.play();
         }
     }
-
+//-----------------------------game over sfx
     gameOver() {
         if (!muted) {
         this.stopMusic();
@@ -143,7 +135,7 @@ class MixOrMatch {
         this.stats = document.getElementById('stats');
         this.audioController = new AudioController();
     }
-
+//------------------------------------------------start game
     startGame() {
         this.cardToCheck = null;
         this.totalClicks = 0;
@@ -159,14 +151,14 @@ class MixOrMatch {
         this.timer.innerHTML = this.timeRemaining;
         this.ticker.innerHTML = this.totalClicks;
     }
-    
+//-----------------------------------------------hide cards 
     hideCards() {
         this.cardsArray.forEach(cards => {
             cards.classList.remove('visible');
             cards.classList.remove('matched');
         });
     }
-
+//------------------------------------------------flip card
     flipCard(cards) {
         if(this.canFlipCard(cards)) {
             this.audioController.flip();
@@ -179,7 +171,7 @@ class MixOrMatch {
                 this.cardToCheck = cards;
         }
     }
-
+//-------------------------------------check if cards match
     checkForCardMatch(cards) {
         if(this.getCardType(cards) === this.getCardType(this.cardToCheck))
             this.cardMatch(cards, this.cardToCheck);
@@ -187,7 +179,7 @@ class MixOrMatch {
             this.cardMisMatch(cards, this.cardToCheck);
         this.cardToCheck = null;
     }
-
+//-------------------------------------if cards are matched
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
@@ -197,7 +189,7 @@ class MixOrMatch {
         if(this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
-
+//----------------------------------if cards are mismatched
     cardMisMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
@@ -210,7 +202,7 @@ class MixOrMatch {
     getCardType(cards) {
         return cards.getElementsByClassName('card-value')[0].src;
     }
-
+//-----------------------------------------starts countdown
     startCountDown() {
          return setInterval(() => {
              if (!paused) {
@@ -221,13 +213,13 @@ class MixOrMatch {
                 this.gameOver();
             }, 1000);
     }
-
+//-------------------------------------game over conditions
     gameOver() {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
     }
-
+//---------------------------------------victory conditions
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
@@ -250,13 +242,13 @@ class MixOrMatch {
             `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
         }
     }
-
+//----------------------------------------------reset game
     reset() {
         clearInterval(this.countDown);
         paused = !paused;
         this.startGame();
     }
-
+//------------------------------logic for randomizing cards
     shuffleCards() {
         for(let i = this.cardsArray.length - 1; i > 0; i--) {
             let randIndex = Math.floor(Math.random() * (i+1));
@@ -264,7 +256,7 @@ class MixOrMatch {
             this.cardsArray[i].style.order = randIndex;
         }
     }
-
+//------------------------------------------valid card flip
     canFlipCard(cards) {
         return !this.busy && !this.matchedCards.includes(cards) && cards !== this.cardToCheck;
     }
@@ -284,31 +276,32 @@ function ready() {
     let contGame = document.getElementById('continue-game')
     let game = new MixOrMatch(100, cards);
 
+//------------------------------------------start game
     startGame.addEventListener('click', () => {
         rulesPage.classList.remove('visible');
         game.startGame();
     });
-
+//------------------------------------restart gameover
     restartGO.addEventListener('click', () => {
         gameOver.classList.remove('visible');
         game.startGame();
     });
-
+//-------------------------------------restart victory
     restartV.addEventListener('click', () => {
         victory.classList.remove('visible');
         game.startGame();
     });
-
+//------------------------------------------reset game
     resetBTN.addEventListener('click', () => {
         resetOverlay.classList.toggle('visible');
         game.reset();
     });
-
+//---------------------------------------continue game
     contGame.addEventListener('click', () => {
         resetOverlay.classList.toggle('visible');
         paused = !paused;
     });
-
+//------------------------------------------flip cards
     cards.forEach(card => {
         card.addEventListener('click', () => {
             game.flipCard(card);
