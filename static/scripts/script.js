@@ -64,7 +64,11 @@ infoButton.addEventListener('click', () => {
 
 bgMusic.volume = 0.03;
 bgMusic.loop = true;
-enterBTN.addEventListener('click', () => {bgMusic.play();})
+enterBTN.addEventListener('click', () => {
+    if(!muted) {
+        bgMusic.play();
+    }
+});
 
 const playMusic = () => {
     if(muted){

@@ -3,7 +3,8 @@
 
 :root {
     font-family: 'Syne Mono';
-    color: green;
+    color: #9400B9;
+    --purple: #9400B9;
     min-height: 100vh;
     box-sizing: border-box;
     overflow: hidden;
@@ -12,12 +13,12 @@
 
 body {
     margin: 0;
-    background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+    background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
 }
 
 .page-title {
     font-family: 'Libre Barcode 128 Text';
-    text-shadow: 0px 0px 40px green;
+    text-shadow: 0px 0px 40px var(--purple);
     font-size: 3em;
     font-weight: normal;
     padding: 20px;
@@ -29,13 +30,12 @@ body {
 }
 
 .fa-question-circle {
-    color:green;
     font-size: 2em;
     position: absolute;
     display: unset;
     top: 30px;
     right: 20px;
-    text-shadow: 0px 0px 20px green;
+    text-shadow: 0px 0px 20px var(--purple);
     cursor: pointer;
     z-index: 99;
 }
@@ -47,7 +47,7 @@ body {
 
 .info-overlay {
     display: none;
-    text-shadow: 0px 0px 30px green;
+    text-shadow: 0px 0px 30px var(--purple);
     background-color: rgba(0, 0, 0, 0.829);
     position: fixed;
     top: 0;
@@ -78,8 +78,7 @@ body {
 
 .fa-undo {
     display: flex;
-    text-shadow: 0px 0px 30px green;
-    color: green;
+    text-shadow: 0px 0px 30px var(--purple);
     position: fixed;
     top: 0;
     right: 0;
@@ -94,13 +93,13 @@ body {
 }
 
 .fa-undo:hover {
-    text-shadow: 0px 0px 40px green;
+    text-shadow: 0px 0px 40px var(--purple);
     color: white;
 }
 
 .reset-overlay {
     display: none;
-    text-shadow: 0px 0px 30px green;
+    text-shadow: 0px 0px 30px var(--purple);
     background-color: rgba(0, 0, 0, 0.829);
     position: fixed;
     top: 0;
@@ -131,7 +130,7 @@ body {
     width: 60px;
     background-color: rgba(0, 0, 0, 0);
     font-size: 1.5em;
-    color: green;
+    color: var(--purple);
     border: none;
     position: fixed;
     bottom: -5px;
@@ -155,13 +154,13 @@ body {
 .welcome-overlay {
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+    background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     font-size: 1.5em;
-    text-shadow: 0px 0px 60px green;
+    text-shadow: 0px 0px 60px var(--purple);
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -171,16 +170,11 @@ body {
 
 .welcome-tag{
     font-size: 1.5em;
-    text-shadow: 0px 0px 10px green; 
+    text-shadow: 0px 0px 10px var(--purple); 
 }
 
 .welcome-overlay.visible {
     display: none;
-    /*animation: fadeOut 500ms backwards;
-    -webkit-animation: fadeOut 500ms backwards;
-    -moz-animation: fadeOut 500ms backwards;
-    -o-animation: fadeOut 500ms backwards;
-    -ms-animation: fadeOut 500ms backwards;*/
 }
 
 .welcome-overlay label {
@@ -194,15 +188,15 @@ body {
     font-weight: bolder;
     height: 30px;
     width: 200px;
-    color: green;
+    color:white;
     background-color: black;
-    border: 3px solid green;
+    border: 3px solid var(--purple);
     border-radius: 5%;
 }
 
 .welcome-overlay input:focus {
-    outline: green;
-    box-shadow: 0px 0px 20px lightgreen;
+    outline: var(--purple);
+    box-shadow: 0px 0px 20px var(--purple);
 }
 
 .welcome-button {
@@ -210,7 +204,7 @@ body {
     height: 40px !important;
     width: 120px !important;
     font-size: 0.7em !important;
-    background-color: green !important;
+    background-color: var(--purple) !important;
     font-family: 'Syne Mono';
     font-weight: bolder;
     color: white !important;
@@ -223,16 +217,16 @@ body {
 
 .welcome-button:hover {
     background-color: white !important;
-    color: green !important;
-    box-shadow: 0px 0px 30px green;
-    border: 2px solid green;
+    color: var(--purple) !important;
+    box-shadow: 0px 0px 30px var(--purple);
+    border: 2px solid var(--purple);
 }
 
 .start-game {
     margin: 30px;
     height: 40px;
     width: 120px;
-    background-color: green;
+    background-color: var(--purple);
     font-family: 'Syne Mono';
     font-weight: bolder;
     color: white;
@@ -245,20 +239,20 @@ body {
 
 .start-game:hover {
     background-color: white;
-    color: green;
-    box-shadow: 0px 0px 30px green;
-    border: 2px solid green;
+    color: var(--purple);
+    box-shadow: 0px 0px 30px var(--purple);
+    border: 2px solid var(--purple);
 }
 
 .rules {
     display: none;
-    background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+    background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     font-size: 0.9em;
-    text-shadow: 0px 0px 40px green;
+    text-shadow: 0px 0px 40px var(--purple);
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -287,13 +281,13 @@ body {
     width: 70%;
     margin-top: 10px;
     text-align: center;
-    border: 1px solid green;
+    border: 1px solid var(--purple);
 }
 
 .level-overlay-tag {
     font-size: 1.1em;
     font-weight: bold;
-    text-shadow: 0px 0px 40px green;
+    text-shadow: 0px 0px 40px var(--purple);
 }
 
 .game-container {
@@ -318,7 +312,7 @@ body {
 
 .game-info {
     font-size: 1.25em;
-    text-shadow: 0px 0px 15px green;
+    text-shadow: 0px 0px 15px var(--purple);
 }
 
 .card {
@@ -335,7 +329,7 @@ body {
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
-    box-shadow: 0px 0px 10px green;
+    box-shadow: 0px 0px 10px var(--purple);
     transition: transform 500ms ease-in-out;
 }
 
@@ -365,8 +359,8 @@ body {
 
 .card-front {
     border-radius: 5%;
-    background-color: #001f00;
-    border: 2px solid green;
+    background-color: #16001f;
+    border: 2px solid var(--purple);
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
@@ -375,7 +369,7 @@ body {
 }
 
 .card-back {
-    border: 2px solid green;
+    border: 2px solid var(--purple);
     border-radius: 5%;
     background: black;
 }
@@ -422,7 +416,7 @@ body {
 
 .overlay-text {
     font-size: 1.3em;
-    text-shadow: 0px 0px 30px green;
+    text-shadow: 0px 0px 30px var(--purple);
     display: none;
     position: fixed;
     top: 0;
@@ -437,19 +431,19 @@ body {
 }
 
 .fname {
-    text-shadow: 0px 0px 30px green;
+    text-shadow: 0px 0px 30px var(--purple);
 }
 
 .fname-congrats {
     text-transform: uppercase;
-    text-shadow: 0px 0px 30px green;
+    text-shadow: 0px 0px 30px var(--purple);
 }
 
 .overlay-button {
     display: flex;
     height: 50px;
     width: 150px;
-    background-color: green;
+    background-color: var(--purple);
     font-weight: bolder;
     color: white;
     border: none;
@@ -462,17 +456,12 @@ body {
 
 .overlay-button:hover {
     background-color: white;
-    color: green;
-    box-shadow: 0px 0px 30px green;
+    color: var(--purple);
+    box-shadow: 0px 0px 30px var(--purple);
 }
 
 .overlay-button.visible {
     display: flex;
-    /*animation: overlay-button-grow 500ms forwards;
-    -webkit-animation: overlay-button-grow 500ms forwards;
-    -moz-animation: overlay-button-grow 500ms forwards;
-    -o-animation: overlay-button-grow 500ms forwards;
-    -ms-animation: overlay-button-grow 500ms forwards;*/
 }
 
 .overlay-text.visible {
@@ -486,20 +475,18 @@ body {
 }
 
 
-
 /*-----media queries-----*/
 
 /*-----desktop styling-----*/
 @media only screen and (min-width: 700px) {
 
     .page-title {
-        text-shadow: 0px 0px 10px green; 
         font-size: 4em;
     }
 
     .info-overlay {
         display: none;
-        text-shadow: 0px 0px 30px green;
+        text-shadow: 0px 0px 30px var(--purple);
         background-color: rgba(0, 0, 0, 0.829);
         position: fixed;
         top: 0;
@@ -526,13 +513,13 @@ body {
     .welcome-overlay {
         display: flex;
         flex-direction: column;
-        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         font-size: 2.5em;
-        text-shadow: 0px 0px 40px green;
+        text-shadow: 0px 0px 40px var(--purple);
         position: fixed;
         justify-content: center;
         align-items: center;
@@ -541,7 +528,7 @@ body {
     }
 
     .welcome-tag{
-        text-shadow: 0px 0px 10px green; 
+        text-shadow: 0px 0px 10px var(--purple); 
     }
 
     .welcome-overlay label {
@@ -554,7 +541,7 @@ body {
         height: 50px !important;
         width: 150px !important;
         font-size: 0.6em !important;
-        background-color: green !important;
+        background-color: var(--purple) !important;
         font-family: 'Syne Mono';
         font-weight: bolder;
         color: white !important;
@@ -567,30 +554,30 @@ body {
     
     .welcome-button:hover {
         background-color: white !important;
-        color: green !important;
-        box-shadow: 0px 0px 30px green;
-        border: 2px solid green;
+        color: var(--purple) !important;
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
     }
     
     .welcome-overlay input {
-        color: green;
+        color: var(--purple);
         width: 200px;
         height: 30px;
         background-color: black;
-        box-shadow: 0px 0px 20px green; 
-        border: 3px solid green;
+        box-shadow: 0px 0px 20px var(--purple); 
+        border: 3px solid var(--purple);
         border-radius: 5%;
     }
 
     .rules {
         display: none;
-        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         font-size: 1.2em;
-        text-shadow: 0px 0px 40px green;
+        text-shadow: 0px 0px 40px var(--purple);
         position: fixed;
         justify-content: center;
         align-items: center;
@@ -611,7 +598,7 @@ body {
         width: 50%;
         margin-top: 10px;
         text-align: center;
-        border: 1px solid green;
+        border: 1px solid var(--purple);
     }
 
     .fa-star {
@@ -621,7 +608,7 @@ body {
 
     .reset-overlay {
         display: none;
-        text-shadow: 0px 0px 30px green;
+        text-shadow: 0px 0px 30px var(--purple);
         background-color: rgba(0, 0, 0, 0.829);
         position: fixed;
         top: 0;
@@ -637,8 +624,7 @@ body {
     } 
     
     .fa-undo {
-        text-shadow: 0px 0px 30px green;
-        color: green;
+        text-shadow: 0px 0px 30px var(--purple);
         position: fixed;
         top: 0;
         right: 0;
@@ -656,7 +642,7 @@ body {
         height: 60px;
         width: 160px;
         font-size: 0.9em;
-        background-color: green;
+        background-color: var(--purple);
         font-family: 'Syne Mono';
         font-weight: bolder;
         color: white;
@@ -669,9 +655,9 @@ body {
     
     .start-game:hover {
         background-color: white;
-        color: green;
-        box-shadow: 0px 0px 30px green;
-        border: 2px solid green;
+        color: var(--purple);
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
     }
     
     .game-container {
@@ -692,7 +678,7 @@ body {
 
     .overlay-text {
         font-size: 2.2em;
-        text-shadow: 0px 0px 30px green;
+        text-shadow: 0px 0px 30px var(--purple);
         display: none;
         position: fixed;
         top: 0;
@@ -710,7 +696,7 @@ body {
         height: 50px;
         width: 150px;
         font-size: 0.5em;
-        background-color: green;
+        background-color: var(--purple);
         font-weight: bolder;
         color: white;
         border: none;
@@ -723,8 +709,8 @@ body {
     
     .overlay-button:hover {
         background-color: white;
-        color: green;
-        box-shadow: 0px 0px 30px green;
+        color: var(--purple);
+        box-shadow: 0px 0px 30px var(--purple);
     }
 
     .overlay-button.visible {
@@ -749,7 +735,7 @@ body {
     .sfx {
         background-color: rgba(0, 0, 0, 0);
         font-size: 2em;
-        color: green;
+        color: var(--purple);
         border: none;
         position: fixed;
         left: 20px;
@@ -765,13 +751,13 @@ body {
     .welcome-overlay {
         display: flex;
         flex-direction: column;
-        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         font-size: 2em;
-        text-shadow: 0px 0px 40px green;
+        text-shadow: 0px 0px 40px var(--purple);
         position: fixed;
         justify-content: center;
         align-items: center;
@@ -781,7 +767,7 @@ body {
     }
 
     .welcome-tag{
-        text-shadow: 0px 0px 10px green; 
+        text-shadow: 0px 0px 10px var(--purple); 
     }
 
     .welcome-overlay label {
@@ -794,7 +780,7 @@ body {
         height: 50px;
         width: 150px;
         font-size: 0.6em;
-        background-color: green !important;
+        background-color: var(--purple) !important;
         font-family: 'Syne Mono';
         font-weight: bolder;
         color: white !important;
@@ -807,13 +793,13 @@ body {
 
     .rules {
         display: none;
-        background-image: linear-gradient(315deg, #001f00 0%, #0D0208 100%);
+        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         font-size: 1em;
-        text-shadow: 0px 0px 40px green;
+        text-shadow: 0px 0px 40px var(--purple);
         position: fixed;
         justify-content: center;
         align-items: center;
@@ -833,7 +819,7 @@ body {
         width: 70%;
         margin-top: 10px;
         text-align: center;
-        border: 1px solid green;
+        border: 1px solid var(--purple);
     }
 
     .game-container {
@@ -858,7 +844,7 @@ body {
 
     .page-title {
         font-family: 'Libre Barcode 128 Text';
-        text-shadow: 0px 0px 40px green;
+        text-shadow: 0px 0px 40px var(--purple);
         font-size: 3em;
         font-weight: normal;
         padding: 20px;
@@ -871,7 +857,7 @@ body {
 
     .info-overlay {
         display: none;
-        text-shadow: 0px 0px 30px green;
+        text-shadow: 0px 0px 30px var(--purple);
         background-color: rgba(0, 0, 0, 0.829);
         position: fixed;
         top: 0;
@@ -892,19 +878,17 @@ body {
     }
 
     .fa-question-circle {
-        color:green;
         font-size: 1.5em;
         position: absolute;
         display: unset;
         top: 30px;
         right: 20px;
-        text-shadow: 0px 0px 20px green;
+        text-shadow: 0px 0px 20px var(--purple);
         cursor: pointer;
     }
     
     .fa-undo {
-        text-shadow: 0px 0px 30px green;
-        color: green;
+        text-shadow: 0px 0px 30px var(--purple);
         position: fixed;
         top: 0;
         right: 0;
@@ -919,7 +903,7 @@ body {
 
     .reset-overlay {
         display: none;
-        text-shadow: 0px 0px 30px green;
+        text-shadow: 0px 0px 30px var(--purple);
         background-color: rgba(0, 0, 0, 0.829);
         position: fixed;
         top: 0;
@@ -943,7 +927,7 @@ body {
         right: 0;
         bottom: 0;
         font-size: 1em;
-        text-shadow: 0px 0px 40px green;
+        text-shadow: 0px 0px 40px var(--purple);
         position: fixed;
         justify-content: center;
         align-items: center;
@@ -954,7 +938,7 @@ body {
 
     .welcome-tag{
         font-size: 2em;
-        text-shadow: 0px 0px 10px green; 
+        text-shadow: 0px 0px 10px var(--purple); 
     }
 
     .welcome-overlay label {
@@ -968,9 +952,8 @@ body {
         font-weight: bolder;
         height: 30px;
         width: 200px;
-        color: green;
         background-color: black;
-        border: 3px solid green;
+        border: 3px solid var(--purple);
         border-radius: 5%;
     }
 
@@ -979,7 +962,7 @@ body {
         height: 40px !important;
         width: 120px !important;
         font-size: 1em !important;
-        background-color: green !important;
+        background-color: var(--purple) !important;
         font-family: 'Syne Mono';
         font-weight: bolder;
         color: white !important;
@@ -992,9 +975,9 @@ body {
     
     .welcome-button:hover {
         background-color: white !important;
-        color: green !important;
-        box-shadow: 0px 0px 30px green;
-        border: 2px solid green;
+        color: var(--purple) !important;
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
     }
     .welcome-overlay label {
         font-weight: bolder;
@@ -1005,7 +988,7 @@ body {
         margin: 10px;
         height: 50px;
         width: 120px;
-        background-color: green;
+        background-color: var(--purple);
         font-family: 'Syne Mono';
         font-weight: bolder;
         font-size: 1.3em;
@@ -1019,9 +1002,9 @@ body {
     
     .start-game:hover {
         background-color: white;
-        color: green;
-        box-shadow: 0px 0px 30px green;
-        border: 2px solid green;
+        color: var(--purple);
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
     }
 
     .rules {
@@ -1031,7 +1014,7 @@ body {
         right: 0;
         bottom: 0;
         font-size: 0.7em;
-        text-shadow: 0px 0px 40px green;
+        text-shadow: 0px 0px 40px var(--purple);
         position: fixed;
         justify-content: center;
         align-items: center;
@@ -1061,7 +1044,7 @@ body {
         justify-content: center;
         align-items: center;
         text-align: center;
-        border: 1px solid green;
+        border: 1px solid var(--purple);
     }
 
     .game-container {
@@ -1075,7 +1058,7 @@ body {
     
     .game-info {
         font-size: 0.9em;
-        text-shadow: 0px 0px 15px green;
+        text-shadow: 0px 0px 15px var(--purple);
     }
     
     .card {
@@ -1092,13 +1075,13 @@ body {
         justify-content: center;
         align-items: center;
         backface-visibility: hidden;
-        box-shadow: 0px 0px 10px green;
+        box-shadow: 0px 0px 10px var(--purple);
         transition: transform 500ms ease-in-out;
     }
 
     .overlay-text {
         font-size: 1.3em;
-        text-shadow: 0px 0px 30px green;
+        text-shadow: 0px 0px 30px var(--purple);
         display: none;
         position: fixed;
         top: 0;
@@ -1116,7 +1099,7 @@ body {
         height: 30px;
         width: 100px;
         font-size: 0.6em;
-        background-color: green;
+        background-color: var(--purple);
         font-weight: bolder;
         color: white;
         border: none;
@@ -1134,7 +1117,6 @@ body {
         width: 50px;
         background-color: rgba(0, 0, 0, 0);
         font-size: 1.3em;
-        color: green;
         border: none;
         position: fixed;
         bottom: -5px;
