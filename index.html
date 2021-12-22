@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/82e7ef2288.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
     <link href="static/styles/main-styles.css" rel="stylesheet">
     <title>MATCH</title>
 </head>
   <body>
-    <!--------------------------------------------------------game title-->
+    <canvas id="canvas"></canvas>
+    <!--game title-->
     <div><h1 class="page-title">MATCH</h1></div>
-    <!------------------------------------------------------info overlay-->
+    <!--info overlay-->
     <div>
       <div id="toggle"><i class="far fa-question-circle"></i></div>
         <div id="info-overlay" class="info-overlay">
@@ -33,7 +33,7 @@
           </p>
       </div>
     </div>
-    <!-----------------------------------------------------reset overlay-->
+    <!--reset overlay-->
     <div>
       <div id="reset"><i class="fas fa-undo"></i></div>
       <div id="reset-overlay" class="reset-overlay">
@@ -42,7 +42,7 @@
         <button id="continue-game" class="overlay-button">no, continue</button>
       </div>
     </div>
-    <!---------------------------------------------------welcome section-->
+    <!--welcome section-->
     <div id="welcome-overlay" class="welcome-overlay ">
       <p class="welcome-tag">welcome player</p>
         <form id="get-username">
@@ -51,9 +51,9 @@
             <input type="submit" id="enter-button" class="welcome-button" value="enter" />
         </form>
     </div>
-    <!-----------------------------------------------------rules section-->
+    <!--rules section-->
     <div id="rules" class="rules ">
-      <h1>welcome <output id="fnameOutput" class="fname"></output></h1>
+      <h1>WELCOME <output id="fnameOutput" class="fname"></output></h1>
       <h2>rules</h2>
       <div class="rules-stars">
         <h4>Click on a card and then match it to its corresponding icon. Match all the cards within 100 seconds to win.</h4>
@@ -66,19 +66,19 @@
       </div>
       <button id="start-game" class="start-game">start game</button>
     </div>
-    <!-------------------------------------------------game over overlay-->
+    <!--game over overlay-->
     <div id="game-over-text" class="overlay-text">
       <p>GAME OVER</p>
       <span><button id="restart-gameover" class="overlay-button restart standard">retry?</button></span>
     </div>
-    <!---------------------------------------------------victory overlay-->
+    <!--victory overlay-->
     <div id="victory-text" class="overlay-text ">
       <p>CONGRATULATIONS <output id="fnameOutputCongrats"  class="fname-congrats"></output> </p>
       <p><output id="stats"></output></p>
       <span><button id="restart-victory" class="overlay-button">retry?</button></span>
     </div>
-    <!----------------------------------------------------game container-->
-    <div class="game-container">
+    <!--game container-->
+    <div id="game-container" class="game-container hidden">
       <div class="game-info-container">
         <div class="game-info">
           <!--countdown timer-->
@@ -89,7 +89,7 @@
           <span id="flips" class="flips">0</span> Flips
         </div>
       </div>
-      <!---------------------------------------------------------cards-->
+      <!--cards-->
       <div class="card">
         <div class="card-back card-face">
           <img class="card-barcode card-barcode-bottom" src="static/images/cards/card-back-1-mob.png" alt="card-barcode">
@@ -235,12 +235,14 @@
         </div>
       </div>
     </div>
-    <!-------------------------------------------------------------audio-->
+    <!--audio-->
     <div >
       <button id="music-ctrl" class="sfx "><i class="fas fa-volume-up"></i></button>
     </div>
-  <!--------------------------------------------------main js script src-->
+  <!--main js script src-->
   <script src="static/scripts/script.js"></script>
+  <!--bg animation script src-->
+  <script src="static/scripts/background-animation.js"></script>
   </body>
 </html>
 

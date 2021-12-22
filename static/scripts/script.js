@@ -62,7 +62,7 @@ infoButton.addEventListener('click', () => {
 
 //-------------------------------bg music and icon controls
 
-bgMusic.volume = 0.03;
+bgMusic.volume = 0.05;
 bgMusic.loop = true;
 enterBTN.addEventListener('click', () => {
     if(!muted) {
@@ -269,6 +269,7 @@ class MixOrMatch {
 //---------------------------------------------------------------readying game
 function ready() {
 
+    let gameContainer = document.getElementById('game-container');
     let rulesPage = document.getElementById('rules');
     let gameOver = document.getElementById('game-over-text');
     let victory = document.getElementById('victory-text');
@@ -283,6 +284,7 @@ function ready() {
 //------------------------------------------start game
     startGame.addEventListener('click', () => {
         rulesPage.classList.remove('visible');
+        gameContainer.classList.remove('hidden');
         game.startGame();
     });
 //------------------------------------restart gameover

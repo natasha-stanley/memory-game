@@ -13,7 +13,14 @@
 
 body {
     margin: 0;
-    background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
+    background: black;
+}
+
+canvas {
+    top: 0;
+    position: absolute;
+    display: block;
+    z-index: 0;
 }
 
 .page-title {
@@ -154,7 +161,7 @@ body {
 .welcome-overlay {
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
+    background: rgba(0, 0, 0, 0);
     top: 0;
     left: 0;
     right: 0;
@@ -246,7 +253,7 @@ body {
 
 .rules {
     display: none;
-    background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
+    background: rgba(0, 0, 0, 0);
     top: 0;
     left: 0;
     right: 0;
@@ -258,7 +265,6 @@ body {
     align-items: center;
     text-align: center;
     flex-direction: column;
-    padding: -10px;
     z-index: 998;
 }
 
@@ -267,21 +273,30 @@ body {
 }
 
 .rules h1 {
-    margin-top: 50px;
+    margin-top: 60px;
+    font-size: 1.75em;
 }
 
 .rules h2 {
     margin-top: -5px;
+    font-size: 1.5em;
+}
+
+.rules h4 {
+    margin-top: -10px;
 }
 
 .stars {
     margin: 0 auto 0 auto;
-    padding-top: 10px;
     padding: 10px;
     width: 70%;
     margin-top: 10px;
     text-align: center;
     border: 1px solid var(--purple);
+}
+
+.stars i {
+    padding-top: 5px;
 }
 
 .level-overlay-tag {
@@ -297,11 +312,10 @@ body {
     margin-top: 175px;
     justify-content: center;
     perspective: 500px;
-    animation: info-grow 500ms forwards;
-    -webkit-animation: info-grow 500ms forwards;
-    -moz-animation: info-grow 500ms forwards;
-    -o-animation: info-grow 500ms forwards;
-    -ms-animation: info-grow 500ms forwards;
+}
+
+.game-container.hidden {
+    display: none;
 }
 
 .game-info-container {
@@ -432,6 +446,7 @@ body {
 
 .fname {
     text-shadow: 0px 0px 30px var(--purple);
+    text-transform: uppercase;
 }
 
 .fname-congrats {
@@ -440,6 +455,7 @@ body {
 }
 
 .overlay-button {
+    font-family: 'Syne Mono';
     display: flex;
     height: 50px;
     width: 150px;
@@ -474,10 +490,9 @@ body {
     -ms-animation: overlay-grow 500ms forwards;
 }
 
+/*------------------------------------------------media queries-----*/
 
-/*-----media queries-----*/
-
-/*-----desktop styling-----*/
+/*--------------desktop styling-----*/
 @media only screen and (min-width: 700px) {
 
     .page-title {
@@ -513,7 +528,7 @@ body {
     .welcome-overlay {
         display: flex;
         flex-direction: column;
-        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
+        background: rgba(0, 0, 0, 0);
         top: 0;
         left: 0;
         right: 0;
@@ -560,7 +575,6 @@ body {
     }
     
     .welcome-overlay input {
-        color: var(--purple);
         width: 200px;
         height: 30px;
         background-color: black;
@@ -571,7 +585,7 @@ body {
 
     .rules {
         display: none;
-        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
+        background: rgba(0, 0, 0, 0);
         top: 0;
         left: 0;
         right: 0;
@@ -589,6 +603,10 @@ body {
     
     .rules.visible {
         display: flex;
+    }
+
+    .rules h4 {
+        padding: 5px;
     }
     
     .stars {
@@ -745,13 +763,13 @@ body {
 }
 
 /*-----landscape tablet styling-----*/
-@media only screen and (min-device-width : 700px) and (max-device-width : 1280px) and (orientation : landscape) {
+@media only screen and (min-width : 700px) and (max-width : 1280px) and (orientation : landscape) {
 
 
     .welcome-overlay {
         display: flex;
         flex-direction: column;
-        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
+        background: rgba(0, 0, 0, 0);
         top: 0;
         left: 0;
         right: 0;
@@ -793,7 +811,7 @@ body {
 
     .rules {
         display: none;
-        background-image: linear-gradient(315deg, #11001f 0%, #0D0208 100%);
+        background: rgba(0, 0, 0, 0);
         top: 0;
         left: 0;
         right: 0;
@@ -840,7 +858,7 @@ body {
 }
 
 /*-----landscape mobile styling-----*/
-@media only screen and (min-device-width : 319px) and (max-device-width : 800px) and (orientation : landscape) {
+@media only screen and (min-width : 319px) and (max-width : 900px) and (orientation : landscape) {
 
     .page-title {
         font-family: 'Libre Barcode 128 Text';
@@ -1040,11 +1058,15 @@ body {
     .stars {
         float: left;
         width: 30%;
-        height: 35%;
+        height: 45%;
         justify-content: center;
         align-items: center;
         text-align: center;
         border: 1px solid var(--purple);
+    }
+
+    .stars i {
+        padding-bottom: 7px;
     }
 
     .game-container {
@@ -1125,9 +1147,7 @@ body {
     }
 }
 
-
-
-/*-----animations-----*/
+/*--------------------------------------------------animations-----*/
 
 @keyframes dance {
     0%, 100% {
@@ -1151,17 +1171,6 @@ body {
     }
 }
 
-/*@keyframes overlay-button-grow {
-    from {
-        background: rgba(0, 0, 0, 0);
-        font-size: 0;
-    }
-    to {
-        background-color: green;
-        font-size: 0;
-    }
-}*/
-
 @keyframes info-grow {
     from {
         opacity: 0;
@@ -1170,28 +1179,3 @@ body {
         opacity: 1;
     }
 }
-
-/*
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-        display: flex;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
-}
-
-@-moz-keyframes fadeOut {
-    0% {
-        opacity: 1;
-        display: flex;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
-}
-*/
-
