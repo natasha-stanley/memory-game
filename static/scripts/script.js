@@ -1,3 +1,7 @@
+/*MAIN JS PAGE*/
+/*tutorial found on youtube for the initial JS creation of the game can be found here: https://www.youtube.com/watch?v=3uuQ3g92oPQ - author PortEXE */
+/*original code pen link for the animated background inspiration can be found here: ttps://codepen.io/AchrafBoujjou/pen/RxjWXB - author Achraf Boujjou*/
+
 "use strict";
 
 /*jshint esversion: 6 */
