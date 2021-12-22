@@ -105,7 +105,7 @@ The hosting platform that I've used for my project is GitHub Pages. To deploy my
 5. Commit the files that have been staged in the local repository. `$ git commit -m "First commit"`
 6. In the GitHub remote repository, copied the HTTPS or SSH key.
 7. In the Git Bash terminal, added the remote repository `$ git remote add origin main` and pasted the key. `$ git remote add origin ''https://github.com/natasha-crain/memory-game.git"`
-8. Push the changes from the local repository to the remote repository `$ git push origin main`
+8. Push the changes from the local repository to the remote repository `$ git push origin master`
 9. Entered my GitHub username and password.
 10. Pushed many commits through the project `$ git commit`
 11. This brings up another window in which to add a more detailed commit, with the first line being the header of the commit
