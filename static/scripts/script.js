@@ -228,6 +228,57 @@ class MixOrMatch {
         document.getElementById('game-over-text').classList.add('visible');
     }
 //---------------------------------------victory conditions
+
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.timeRemaining >= 70 && (this.totalClicks <= 30 && this.totalClicks >= 5)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    } else if (this.timeRemaining >= 60 && (this.totalClicks <= 40 && this.totalClicks >= 31)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    } else if (this.timeRemaining >= 50 && (this.totalClicks <= 50 && this.totalClicks >= 41)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">';
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+    }
+}
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if ((this.timeRemaining >= 70 && this.timeRemaining <= 90) || (this.totalClicks <= 30 && this.totalClicks >= 5)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    } else if ((this.timeRemaining >= 60 && this.timeRemaining <= 69) || (this.totalClicks <= 40 && this.totalClicks >= 31)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    } else if ((this.timeRemaining >= 50 && this.timeRemaining <= 59) || (this.totalClicks <= 50 && this.totalClicks >= 41)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">';
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+    }
+}
+*/
+
+  
+/*
     victory() {
         clearInterval(this.countDown);
         this.audioController.victory();
@@ -250,6 +301,10 @@ class MixOrMatch {
             `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
         }
     }
+
+*/
+
+
 //----------------------------------------------reset game
     reset() {
         clearInterval(this.countDown);

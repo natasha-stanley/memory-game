@@ -76,7 +76,7 @@ Royalty free music from the following websites was also used:
 - [**background music**](https://www.dl-sounds.com/?s=sci+fi+pulse) - [DL Sounds](https://www.dl-sounds.com/)
 - [**card flip sound effect**](https://elements.envato.com/card-flip-48003-STJE23H?utm_source=mixkit&utm_medium=referral&utm_campaign=elements_mixkit_cs_sfx_search_no_results) - [envatoelements](https://elements.envato.com/)
 - [**card match sound effect**](https://elements.envato.com/arcade-game-notification-GVECZA8) - [envatoelements](https://elements.envato.com/)
-- [**game victory sound effect**](https://elements.envato.com/retro-game-success-M2VZRGX)** - [envatoelements](https://elements.envato.com/)
+- [**game victory sound effect**](https://elements.envato.com/video-game-win-JKL83NH)** - [envatoelements](https://elements.envato.com/)
 - [**game over sound effect**](https://elements.envato.com/arcade-game-over-VXTKMQ3) - [envatoelements](https://elements.envato.com/)
 
 ## **Version Control**
