@@ -4,7 +4,7 @@ I created this game for my Front End Development course with The Learning People
 
 ## UX/UI
 
-As a personal choice, I have designed the application inspired by the movie franchise 'The Matrix', taking care to choose fonts that are in align with this but are also readable to the player, and a simply colour scheme that put emphasis on box and text shadows to create a glow effect. An animated background reminiscent of 'The Matrix' is visible from every area of the application, but  care has been taken to make sure that the text of the application is not overwhelmed and easily readable.
+As a personal choice, I have designed the application inspired by the movie franchise 'The Matrix', taking care to choose fonts that are in align with this but are also readable to the player, and a simple colour scheme that put emphasis on box and text shadows to create a glow effect. An animated background reminiscent of 'The Matrix' is visible from every area of the application, but  care has been taken to make sure that the text of the application is not overwhelmed and is still easily readable.
 
 The application has three mains areas and another four overlays:
 
@@ -59,7 +59,7 @@ To plan my game I used Balsamiq to create initial wireframes and to take down dr
 
 - **Levels** - Initially they was to be individual levels for the player to select in the Rules Area, but time and lack of knowledge to have individual working levels meant this idea was altered instead to `if else if statements` for the **Victory overlay**. Once I have more time, experience and knowledge, I will convert this back to the original idea of separate levels the player can choose from the offset.
 
-## Technologies
+## Technologies/Resources
 
 This project was created with:
 
@@ -70,6 +70,14 @@ This project was created with:
 - **[FontAwesome](https://fontawesome.com/v4.7/icons/)**  - I used FontAwesome for the music toggle button, info icon and reset icon.
 - **[Google Fonts](https://www.w3schools.com/howto/howto_google_fonts.asp)** - I used Google Fonts to stylise the text in keeping with the theme of the application.
 - **[VS Code](https://code.visualstudio.com/)** - I used VS Code as the software to develop and write the code for my application.
+
+Royalty free music from the following websites was also used:
+
+- [**background music**](https://www.dl-sounds.com/?s=sci+fi+pulse) - [DL Sounds](https://www.dl-sounds.com/)
+- [**card flip sound effect**](https://elements.envato.com/card-flip-48003-STJE23H?utm_source=mixkit&utm_medium=referral&utm_campaign=elements_mixkit_cs_sfx_search_no_results) - [envatoelements](https://elements.envato.com/)
+- [**card match sound effect**](https://elements.envato.com/arcade-game-notification-GVECZA8) - [envatoelements](https://elements.envato.com/)
+- [**game victory sound effect**](https://elements.envato.com/retro-game-success-M2VZRGX)** - [envatoelements](https://elements.envato.com/)
+- [**game over sound effect**](https://elements.envato.com/arcade-game-over-VXTKMQ3) - [envatoelements](https://elements.envato.com/)
 
 ## **Version Control**
 
@@ -141,4 +149,4 @@ To run my code locally, users can follow these steps:
 
 ### Acknowledgements
 
-A massive, huge thank you to my mentor, [Sunny Hebbar](https://github.com/hebs87). His guidance and assistance were invaluable and saved me from going (completely) insane.
+A massive, huge thank you to my mentor, [Sunny Hebbar](https://github.com/hebs87). His guidance and assistance were invaluable and saved me from going (completely) insane, as well as my friends for playing the game and revealing some logical errors. Oops.
