@@ -98,12 +98,8 @@ class AudioController {
         this.matchSound.volume = 0.15;
         this.victorySound.volume = 0.15;
         this.gameOverSound.volume = 0.15;
-    }
-//--------------------------------stop music  
-    stopMusic() {
-        this.flipSound.pause();
-        this.matchSound.pause();
-    }
+    } 
+    
 //-----------------------------flip card sfx
     flip() {
         if (!muted) {
@@ -119,14 +115,12 @@ class AudioController {
 //-------------------------------victory sfx
     victory() {
         if (!muted) {
-        this.stopMusic();
         this.victorySound.play();
         }
     }
 //-----------------------------game over sfx
     gameOver() {
         if (!muted) {
-        this.stopMusic();
         this.gameOverSound.play();
         }
     }
@@ -141,6 +135,7 @@ class MixOrMatch {
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.stats = document.getElementById('stats');
+        this.stats = stats;
         this.audioController = new AudioController();
     }
 //------------------------------------------------start game
@@ -228,7 +223,332 @@ class MixOrMatch {
         document.getElementById('game-over-text').classList.add('visible');
     }
 //---------------------------------------victory conditions
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.totalClicks <= 30 && (this.timeRemaining >= 70 || this.timeRemaining <= 5)) {
+            this.stats.innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+            '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+            console.log('5 stars');
+    } else if (this.totalClicks <= 40 && (this.timeRemaining >= 60 || this.timeRemaining <= 69)) {
+            this.stats.innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+            '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+            console.log('3 stars');
+    } else if ((this.totalClicks <= 50 && this.totalClicks >= 41) || (this.timeRemaining >= 50 && this.timeRemaining <= 59)) {
+            this.stats.innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+            '<i class="fas fa-star">';
+            console.log('1 star');
+    } else {
+            this.stats.innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+            console.log('zero star');
+        }
+    }
+*/
 
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.totalClicks <= 30 && this.timeRemaining >= 70) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('5 stars')
+    } else if (this.totalClicks <= 40 && this.timeRemaining <= 69) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('3 stars')
+    } else if (this.totalClicks <= 50 && this.timeRemaining <= 59) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">'
+        console.log('1 star')
+    } else if (this.totalClicks <= 60 && this.timeRemaining <= 49) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`
+    }
+}
+
+*/
+
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.totalClicks >= 51 && this.timeRemaining <= 49) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` 
+        console.log('no stars')
+    } else if (this.totalClicks >= 41 && this.timeRemaining <= 59) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">'
+        console.log('1 stars')
+    } else if (this.totalClicks >= 31 && this.timeRemaining <= 69) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('3 star')
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' +
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('5 stars')
+    }
+}
+*/
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.timeRemaining >= 70 && this.totalClicks <= 30 && this.totalClicks >= 1) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('5 stars');
+    } else if (this.timeRemaining <= 69 && this.timeRemaining >= 60 && this.totalClicks >= 31 && this.totalClicks <= 40) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('3 stars');
+    } else if (this.timeRemaining <= 59 && this.timeRemaining >= 50 && this.totalClicks >= 41 && this.totalClicks <= 50) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">';
+        console.log('1 star');
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+        console.log('0 star');
+    }
+}
+*/
+
+/*
+
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.timer > 70 && this.ticker < 30) {
+        this.stats.innerHTML = `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('5 stars');
+    } else if (this.timer <= 69 && this.ticker >= 31 && this.timer > 60 && this.ticker < 40) {
+        this.stats.innerHTML = `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('3 stars');
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+        console.log('0 star');
+    }
+}
+*/
+
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    this.stats.innerHTML = this.results();
+
+}
+
+results() {
+    if(this.timeRemaining <= 49 || this.totalClicks >= 51) return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+    if(this.timeRemaining <= 59 || this.totalClicks >= 41) return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + '<i class="fas fa-star">';
+    if(this.timeRemaining <= 69 || this.totalClicks >= 31) return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+}
+
+/*
+results() {
+    if(this.timeRemaining <= 49 || this.totalClicks >= 51) return "no stars";
+    if(this.timeRemaining <= 59 || this.totalClicks >= 41) return "1 stars";
+    if(this.timeRemaining <= 69 || this.totalClicks >= 31) return "3 stars";
+    return "5 stars";
+}
+*/
+
+
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    switch(stats) {
+        case this.timer >= 70 && this.ticker <= 30:
+            this.stats.innerHTML = `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+            '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+            console.log('5 stars');
+            break;
+        default:
+            this.stats.innerHTML = 
+            `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+            console.log('0 star');
+    }
+}
+*/
+
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.timeRemaining < 50 && this.totalClicks > 50) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+        console.log('no stars');
+    } else if (this.timeRemaining < 60 && this.totalClicks > 40 ) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">';
+        console.log('1 stars');
+    } else if (this.timeRemaining < 70 && this.totalClicks > 30) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('3 star');
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' +
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('5 stars');
+    }
+}
+
+*/
+
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.totalClicks > 50 && this.timeRemaining < 50) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
+        console.log('no stars');
+    } else if (this.totalClicks > 40 && this.timeRemaining < 60) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">';
+        console.log('1 stars');
+    } else if (this.totalClicks > 30 && this.timeRemaining < 70) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('3 star');
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' +
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        console.log('5 stars');
+    }
+}
+*/
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.totalClicks >= 51 || this.timeRemaining <= 49) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` 
+        console.log('no stars')
+    } else if (this.totalClicks >= 50 || this.timeRemaining <= 59) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">'
+        console.log('1 stars')
+    } else if (this.totalClicks <= 40 || this.timeRemaining <= 69) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('3 star')
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' +
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('5 stars')
+    }
+}
+*/
+
+/*
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.totalClicks <= 30 && this.timeRemaining >= 70) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('5 stars')
+    } else if (this.totalClicks <= 40 && (this.timeRemaining >= 60 || this.timeRemaining <= 69)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">'
+        console.log('3 stars')
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">'
+        console.log('1 star')
+    };
+}
+*/
+
+/*
+
+victory() {
+    clearInterval(this.countDown);
+    this.audioController.victory();
+    getName();
+    document.getElementById('victory-text').classList.add('visible');
+    if (this.timeRemaining >= 70 && (this.totalClicks <= 30 && this.totalClicks >= 5)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    } else if (this.timeRemaining >= 60 && (this.totalClicks <= 40 && this.totalClicks >= 31)) {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    } else {
+        this.stats.innerHTML = 
+        `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + 
+        '<i class="fas fa-star">';
+    }
+}
+*/
+/*
 victory() {
     clearInterval(this.countDown);
     this.audioController.victory();
@@ -251,6 +571,8 @@ victory() {
         `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
     }
 }
+
+*/
 
 /*
 victory() {
@@ -337,7 +659,7 @@ function ready() {
     let cards = Array.from(document.getElementsByClassName('card'));
     let startGame = document.getElementById('start-game');
     let resetBTN = document.getElementById('reset-game');
-    let contGame = document.getElementById('continue-game')
+    let contGame = document.getElementById('continue-game');
     let game = new MixOrMatch(100, cards);
 
 //------------------------------------------start game
