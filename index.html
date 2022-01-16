@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/82e7ef2288.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
     <link href="static/styles/main-styles.css" rel="stylesheet">
     <title>MATCH</title>
 </head>
@@ -15,31 +14,41 @@
     <div><h1 class="page-title">MATCH</h1></div>
     <!--info overlay-->
     <div>
-      <div id="toggle"><i class="far fa-question-circle"></i></div>
+      <div id="toggle"><i class="far fa-question-circle inactive"></i></div>
         <div id="info-overlay" class="info-overlay">
           <h1>Rules</h1>
           <h4>Click on a card and then match it to its corresponding icon. Match all to win.</h4>
           <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             <br>
-            match all the cards before the timer reaches 70 seconds and under 30 flips
+            match all the cards before the timer reaches 70 seconds and under 15 guesses
           </p>
           <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             <br>
-            match all the cards before the timer reaches 60 seconds and under 40 flips
+            match all the cards before the timer reaches 60 seconds and under 20 guesses
           </p>
           <p><i class="fas fa-star"></i>
             <br>
-            match all the cards before the timer reaches 50 seconds and under 50 flips
+            match all the cards before the timer reaches 50 seconds and under 25 guesses
           </p>
+          <button id="okay-btn" class="overlay-button">okay!</button>
       </div>
     </div>
     <!--reset overlay-->
     <div>
-      <div id="reset"><i class="fas fa-undo"></i></div>
+      <div id="reset"><i class="fas fa-undo inactive"></i></div>
       <div id="reset-overlay" class="reset-overlay">
         <p>Are you sure you want to reset your current game?</p>
         <button id="reset-game" class="overlay-button">yes, reset</button>
         <button id="continue-game" class="overlay-button">no, continue</button>
+      </div>
+    </div>
+    <!--return home overlay-->
+    <div>
+      <div id="return"><i class="fas fa-home inactive"></i></div>
+      <div id="return-overlay" class="reset-overlay">
+        <p>Are you sure you want to return to the homepage? Your current game will be lost.</p>
+        <button id="return-home" class="overlay-button">return home</button>
+        <button id="cont-game" class="overlay-button">continue game</button>
       </div>
     </div>
     <!--welcome section-->
@@ -58,11 +67,11 @@
       <div class="rules-stars">
         <h4>Click on a card and then match it to its corresponding icon. Match all the cards within 100 seconds to win.</h4>
         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <p>match all the cards before the timer reaches 70 seconds and under 30 flips</p></div>
+          <p>match all the cards before the timer reaches 70 seconds and under 15 guesses</p></div>
         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <p>match all the cards before the timer reaches 60 seconds and under 40 flips</p></div>
+          <p>match all the cards before the timer reaches 60 seconds and under 20 guesses</p></div>
         <div class="stars"><i class="fas fa-star"></i>
-          <p>match all the cards before the timer reaches 50 seconds and under 50 flips</p></div>
+          <p>match all the cards before the timer reaches 50 seconds and under 25 guesses</p></div>
       </div>
       <button id="start-game" class="start-game">start game</button>
     </div>
@@ -70,12 +79,14 @@
     <div id="game-over-text" class="overlay-text">
       <p>GAME OVER</p>
       <span><button id="restart-gameover" class="overlay-button restart standard">retry?</button></span>
+      <button id="return-home-GO" class="overlay-button return-home-overlay">return home</button>
     </div>
     <!--victory overlay-->
     <div id="victory-text" class="overlay-text ">
-      <p>CONGRATULATIONS <output id="fnameOutputCongrats"  class="fname-congrats"></output> </p>
+      <p>CONGRATULATIONS <output id="fnameOutputCongrats"  class="fname-congrats"></output></p>
       <p><output id="stats"></output></p>
       <span><button id="restart-victory" class="overlay-button">retry?</button></span>
+      <button id="return-home-vic" class="overlay-button return-home-overlay">return home</button>
     </div>
     <!--game container-->
     <div id="game-container" class="game-container hidden">
@@ -85,8 +96,8 @@
           <span id="time-remaining">100</span> Time
         </div>
         <div class="game-info">
-          <!--flip counter-->
-          <span id="flips" class="flips">0</span> Flips
+          <!--guess counter-->
+          <span id="guesses">0</span> Guesses
         </div>
       </div>
       <!--cards-->
@@ -239,10 +250,14 @@
     <div >
       <button id="music-ctrl" class="sfx "><i class="fas fa-volume-up"></i></button>
     </div>
-  <!--main js script src-->
-  <script src="static/scripts/script.js"></script>
-  <!--bg animation script src-->
-  <script src="static/scripts/background-animation.js"></script>
+    <!--main js script src-->
+    <script src="static/scripts/script.js"></script>
+    <!--bg animation script src-->
+    <script src="static/scripts/background-animation.js"></script>
+    <!--font awesome kit-->
+    <script src="https://kit.fontawesome.com/82e7ef2288.js" crossorigin="anonymous"></script>
+    <!--jquery cdn-->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
   </body>
 </html>
 

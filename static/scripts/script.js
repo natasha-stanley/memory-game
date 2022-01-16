@@ -12,16 +12,17 @@
 let paused = false;
 let audio = document.getElementById('audio');
 let playBTN = document.getElementById('music-ctrl');
-let bgMusic = new Audio('static/audio/Sci-fi-Pulse-Loop.mp3');
+let bgMusic = new Audio('static/audio/sci-fi-pulse-loop.mp3');
 let muted = false;
 let enterBTN = document.getElementById('enter-button');
+const gameContainer = document.getElementById('game-container');
+
 
 //-----------------------------------------------------------------welcome page
-function getName() {
-    var name = document.getElementById('fname');
-    var nameOutput = document.getElementById('fnameOutput');
-    var enterBTN = document.getElementById('enter-button');
-    var nameOutputVictory = document.getElementById('fnameOutputCongrats');
+const getName = () => {
+    const name = document.getElementById('fname');
+    const nameOutput = document.getElementById('fnameOutput');
+    const nameOutputVictory = document.getElementById('fnameOutputCongrats');
     enterBTN.addEventListener('click', storeData(), retrieveData(), false);
 
     $("#get-username").submit(function(e) {
@@ -37,8 +38,8 @@ function getName() {
     }
 }
 
-let welcomeOverlay = document.getElementById('welcome-overlay');
-let rulesPage = document.getElementById('rules');
+const welcomeOverlay = document.getElementById('welcome-overlay');
+const rulesPage = document.getElementById('rules');
 enterBTN.addEventListener('click', () => {
         getName();
         welcomeOverlay.classList.toggle('visible');
@@ -58,7 +59,12 @@ resetBTN.addEventListener('click', () => {
 
 const infoOverlay = document.getElementById('info-overlay');
 const infoButton = document.getElementById('toggle');
+const okBTN = document.getElementById('okay-btn');
 infoButton.addEventListener('click', () => {
+    infoOverlay.classList.toggle('visible');
+    paused = !paused;
+});
+okBTN.addEventListener('click', () => {
     infoOverlay.classList.toggle('visible');
     paused = !paused;
 });
@@ -101,25 +107,25 @@ class AudioController {
         this.gameOverSound.volume = 0.15;
     } 
     
-//-----------------------------flip card sfx
+    //-----------------------------flip card sfx
     flip() {
         if (!muted) {
         this.flipSound.play();
         }
     }
-//---------------------------cards match sfx
+    //---------------------------cards match sfx
     match() {
         if (!muted) {
         this.matchSound.play();
         }
     }
-//-------------------------------victory sfx
+    //-------------------------------victory sfx
     victory() {
         if (!muted) {
         this.victorySound.play();
         }
     }
-//-----------------------------game over sfx
+    //-----------------------------game over sfx
     gameOver() {
         if (!muted) {
         this.gameOverSound.play();
@@ -127,22 +133,22 @@ class AudioController {
     }
 }
 
-//------------------------------------------------------------------game logic
+//-------------------------------------------------------------------game logic
 class MixOrMatch {
     constructor(totalTime, cards) {
         this.cardsArray = cards;
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
         this.timer = document.getElementById('time-remaining');
-        this.ticker = document.getElementById('flips');
+        this.ticker = document.getElementById('guesses');
         this.stats = document.getElementById('stats');
         this.stats = stats;
         this.audioController = new AudioController();
     }
-//------------------------------------------------start game
+    //------------------------------------------------start game
     startGame() {
         this.cardToCheck = null;
-        this.totalClicks = 0;
+        this.totalGuesses = 0;
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
@@ -153,37 +159,39 @@ class MixOrMatch {
         }, 500);
         this.hideCards();
         this.timer.innerHTML = this.timeRemaining;
-        this.ticker.innerHTML = this.totalClicks;
+        this.ticker.innerHTML = this.totalGuesses;
     }
-//-----------------------------------------------hide cards 
+    //-----------------------------------------------hide cards 
     hideCards() {
         this.cardsArray.forEach(cards => {
             cards.classList.remove('visible');
             cards.classList.remove('matched');
         });
     }
-//------------------------------------------------flip card
+    //------------------------------------------------flip card
     flipCard(cards) {
         if(this.canFlipCard(cards)) {
             this.audioController.flip();
-            this.totalClicks++;
-            this.ticker.innerText = this.totalClicks;
             cards.classList.add('visible');
-            if(this.cardToCheck)
+            if(this.cardToCheck) {
                 this.checkForCardMatch(cards);
-            else
+            } else {
                 this.cardToCheck = cards;
+            }
         }
     }
-//-------------------------------------check if cards match
+    //-------------------------------------check if cards match
     checkForCardMatch(cards) {
-        if(this.getCardType(cards) === this.getCardType(this.cardToCheck))
+        if(this.getCardType(cards) === this.getCardType(this.cardToCheck)) {
             this.cardMatch(cards, this.cardToCheck);
-        else
+        } else {
             this.cardMisMatch(cards, this.cardToCheck);
+        }
         this.cardToCheck = null;
+        this.totalGuesses++;
+        this.ticker.innerText = this.totalGuesses;
     }
-//-------------------------------------if cards are matched
+    //-------------------------------------if cards are matched
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
@@ -193,7 +201,7 @@ class MixOrMatch {
         if(this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
-//----------------------------------if cards are mismatched
+    //----------------------------------if cards are mismatched
     cardMisMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
@@ -206,50 +214,55 @@ class MixOrMatch {
     getCardType(cards) {
         return cards.getElementsByClassName('card-value')[0].src;
     }
-//-----------------------------------------starts countdown
+    //-----------------------------------------starts countdown
     startCountDown() {
          return setInterval(() => {
-             if (!paused) {
+            if (!paused) {
                 this.timeRemaining--;
                 this.timer.innerText = this.timeRemaining;
-             }
+            }
             if(this.timeRemaining === 0)
                 this.gameOver();
             }, 1000);
     }
-//-------------------------------------game over conditions
+    //-------------------------------------game over conditions
     gameOver() {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
     }
-//---------------------------------------victory conditions
-victory() {
-    clearInterval(this.countDown);
-    this.audioController.victory();
-    getName();
-    document.getElementById('victory-text').classList.add('visible');
-    this.stats.innerHTML = this.results();
-}
-
-results() {
-    if (this.timeRemaining <= 49 || this.totalClicks >= 51) {
-        return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!`;
-    } else if (this.timeRemaining <= 59 || this.totalClicks >= 41) {
-        return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + '<i class="fas fa-star">';
-    } else if (this.timeRemaining <= 69 || this.totalClicks >= 31) {
-        return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
-    } else {
-        return `You won in ${this.timeRemaining} seconds and ${this.totalClicks} flips!` + '<br>' + '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+    //---------------------------------------victory conditions
+    victory() {
+        clearInterval(this.countDown);
+        this.audioController.victory();
+        getName();
+        document.getElementById('victory-text').classList.add('visible');
+        this.stats.innerHTML = this.results();
     }
-}
-//----------------------------------------------reset game
+
+    results() {
+        if (this.timeRemaining <= 49 || this.totalGuesses >= 26) {
+            return `You won in ${this.timeRemaining} seconds and ${this.totalGuesses + 1} guesses!`;
+        } else if (this.timeRemaining <= 59 || this.totalGuesses >= 21) {
+            return `You won in ${this.timeRemaining} seconds and ${this.totalGuesses + 1} guesses!` + '<br>' + '<i class="fas fa-star">';
+        } else if (this.timeRemaining <= 69 || this.totalGuesses >= 16) {
+            return `You won in ${this.timeRemaining} seconds and ${this.totalGuesses + 1} guesses!` + '<br>' + '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        } else {
+            return `You won in ${this.timeRemaining} seconds and ${this.totalGuesses + 1} guesses!` + '<br>' + '<i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star"><i class="fas fa-star">';
+        }
+    }
+    //----------------------------------------------reset game
     reset() {
         clearInterval(this.countDown);
         paused = !paused;
         this.startGame();
     }
-//------------------------------logic for randomizing cards
+    //----------------------------------------return home reset
+    return() {
+        clearInterval(this.countDown);
+        paused = !paused;
+    }
+    //------------------------------logic for randomizing cards
     shuffleCards() {
         for(let i = this.cardsArray.length - 1; i > 0; i--) {
             let randIndex = Math.floor(Math.random() * (i+1));
@@ -257,61 +270,102 @@ results() {
             this.cardsArray[i].style.order = randIndex;
         }
     }
-//------------------------------------------valid card flip
+    //------------------------------------------valid card flip
     canFlipCard(cards) {
         return !this.busy && !this.matchedCards.includes(cards) && cards !== this.cardToCheck;
     }
 }
 
+//-------------------------------------------------return home and continue game 
+let returnHomeBTN = document.getElementById('return');
+let returnHomeOverlay = Array.from(document.getElementsByClassName('return-home-overlay'));
+const returnHomeVic = document.getElementById('return-home-vic');
+const returnHomeGO = document.getElementById('return-home-GO');
+const returnOverlay = document.getElementById('return-overlay');
+const contGame = document.getElementById('cont-game');
+const returnHome = document.getElementById('return-home');
+
+returnHomeBTN.addEventListener('click', () => {
+    returnOverlay.classList.toggle('visible');
+    paused = !paused;
+});
+contGame.addEventListener('click', () => {
+    returnOverlay.classList.toggle('visible');
+    paused = !paused;
+});
+
 //---------------------------------------------------------------readying game
-function ready() {
+const ready = () => {
 
-    let gameContainer = document.getElementById('game-container');
-    let rulesPage = document.getElementById('rules');
-    let gameOver = document.getElementById('game-over-text');
-    let victory = document.getElementById('victory-text');
-    let restartGO = document.getElementById('restart-gameover');
-    let restartV = document.getElementById('restart-victory');
-    let cards = Array.from(document.getElementsByClassName('card'));
-    let startGame = document.getElementById('start-game');
-    let resetBTN = document.getElementById('reset-game');
-    let contGame = document.getElementById('continue-game');
-    let game = new MixOrMatch(100, cards);
+    const rulesPage = document.getElementById('rules');
+    const gameOver = document.getElementById('game-over-text');
+    const victory = document.getElementById('victory-text');
+    const restartGO = document.getElementById('restart-gameover');
+    const restartV = document.getElementById('restart-victory');
+    const cards = Array.from(document.getElementsByClassName('card'));
+    const startGame = document.getElementById('start-game');
+    const resetBTN = document.getElementById('reset-game');
+    const contGame = document.getElementById('continue-game');
+    const activate = document.querySelectorAll('.inactive');
+    const game = new MixOrMatch(100, cards);
 
-//------------------------------------------start game
+    //------------------------------------------start game
     startGame.addEventListener('click', () => {
         rulesPage.classList.remove('visible');
         gameContainer.classList.remove('hidden');
         game.startGame();
     });
-//------------------------------------restart gameover
+    //------------------------------------restart gameover
     restartGO.addEventListener('click', () => {
         gameOver.classList.remove('visible');
         game.startGame();
     });
-//-------------------------------------restart victory
+    //-------------------------------------restart victory
     restartV.addEventListener('click', () => {
         victory.classList.remove('visible');
         game.startGame();
     });
-//------------------------------------------reset game
+    //------------------------------------------reset game
     resetBTN.addEventListener('click', () => {
         resetOverlay.classList.toggle('visible');
         game.reset();
     });
-//---------------------------------------continue game
+    //---------------------------------------continue game
     contGame.addEventListener('click', () => {
         resetOverlay.classList.toggle('visible');
         paused = !paused;
     });
-//------------------------------------------flip cards
+    //----------------------------------return to homepage
+    returnHome.addEventListener('click', () => {
+        returnOverlay.classList.toggle('visible');
+        welcomeOverlay.classList.toggle('visible');
+        gameContainer.classList.add('hidden');
+        game.return();
+    });
+    returnHomeOverlay.forEach(returnHomeOverlay => {
+        returnHomeOverlay.addEventListener('click', () => {
+            victory.classList.remove('visible');
+            gameOver.classList.remove('visible');
+            welcomeOverlay.classList.toggle('visible');
+            gameContainer.classList.add('hidden');
+            paused = !paused;
+            game.return();
+            });
+    });
+    //--------------------------------------activate icons
+    activate.forEach(activate => {
+        startGame.addEventListener('click', () => {
+            activate.classList.remove('inactive');
+        });
+    });
+    //-----------------------------------------flip cards
     cards.forEach(card => {
         card.addEventListener('click', () => {
             game.flipCard(card);
         });
     });
 }
-    
+
 ready();
 
 

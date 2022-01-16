@@ -2,13 +2,13 @@
 /*tutorial found on youtube for the initial HTML and CSS creation of the game can be found here: https://www.youtube.com/watch?v=28VfzEiJgy4 - author Web Dev Simplified */
 /*original code pen link for the animated background inspiration can be found here: ttps://codepen.io/AchrafBoujjou/pen/RxjWXB - author Achraf Boujjou*/
 
-@import url('https://fonts.googleapis.com/css?family=Libre Barcode 128 Text');
-@import url('https://fonts.googleapis.com/css?family=Syne Mono');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&family=Syne+Mono&display=swap');
 
 :root {
     font-family: 'Syne Mono';
     color: #9400B9;
     --purple: #9400B9;
+    --inactive: #9400b950;
     min-height: 100vh;
     box-sizing: border-box;
     overflow: hidden;
@@ -48,12 +48,16 @@ canvas {
     right: 20px;
     text-shadow: 0px 0px 20px var(--purple);
     cursor: pointer;
-    z-index: 99;
+    z-index: 97;
 }
 
 .fa-question-circle:hover {
     text-shadow: 0px 0px 40px white;
     color: white;
+}
+
+.fa-question-circle.inactive {
+    color: var(--inactive);
 }
 
 .info-overlay {
@@ -108,6 +112,10 @@ canvas {
     color: white;
 }
 
+.fa-undo.inactive {
+    color: var(--inactive);
+}
+
 .reset-overlay {
     display: none;
     text-shadow: 0px 0px 30px var(--purple);
@@ -132,6 +140,27 @@ canvas {
     -moz-animation: info-grow 500ms forwards;
     -o-animation: info-grow 500ms forwards;
     -ms-animation: info-grow 500ms forwards;
+}
+
+.fa-home {
+    display: flex;
+    z-index: 97;
+    text-shadow: 0px 0px 30px var(--purple);
+    position: fixed;
+    text-align: right;
+    font-size: 1.5em;
+    bottom: 25px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.fa-home:hover {
+    text-shadow: 0px 0px 40px var(--purple);
+    color: white;
+}
+
+.fa-home.inactive {
+    color: var(--inactive);
 }
 
 .sfx {
@@ -862,7 +891,7 @@ canvas {
 }
 
 /*-----landscape mobile styling-----*/
-@media only screen and (min-width : 319px) and (max-width : 900px) and (orientation : landscape) {
+@media only screen and (min-width : 319px) and (max-width : 926px) and (orientation : landscape) {
 
     .page-title {
         font-family: 'Libre Barcode 128 Text';
@@ -1107,6 +1136,593 @@ canvas {
 
     .overlay-text {
         font-size: 1.3em;
+        text-shadow: 0px 0px 30px var(--purple);
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .overlay-button {
+        display: flex;
+        height: 30px;
+        width: 100px;
+        font-size: 0.6em;
+        background-color: var(--purple);
+        font-weight: bolder;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        justify-content: space-around;
+        align-items: center;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .sfx {
+        display: flex;
+        z-index: 1000;
+        height: 50px;
+        width: 50px;
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 1.3em;
+        border: none;
+        position: fixed;
+        bottom: -5px;
+        left: 20px;
+        cursor: pointer;
+    }
+}
+
+
+/*-------portrait + landscape mobile styling for
+        smaller mobile devices-----*/
+@media only screen and (min-width : 375px) and (max-width : 667px) and (orientation : landscape) {
+
+    .page-title {
+        font-family: 'Libre Barcode 128 Text';
+        text-shadow: 0px 0px 40px var(--purple);
+        font-size: 3em;
+        font-weight: normal;
+        padding: 20px;
+        top: 5px;
+        left: 5px;
+        margin: 0;
+        position: absolute;
+        z-index: 999;
+    }
+
+    .info-overlay {
+        display: none;
+        text-shadow: 0px 0px 30px var(--purple);
+        background-color: rgba(0, 0, 0, 0.829);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 0.7em;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .info-overlay p {
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .fa-question-circle {
+        font-size: 1.5em;
+        position: absolute;
+        display: unset;
+        top: 30px;
+        right: 20px;
+        text-shadow: 0px 0px 20px var(--purple);
+        cursor: pointer;
+    }
+    
+    .fa-undo {
+        text-shadow: 0px 0px 30px var(--purple);
+        position: fixed;
+        top: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: right;
+        margin-top: 73px;
+        margin-right: 23px;
+        font-size: 1.1em;
+        cursor: pointer;
+    }
+
+    .reset-overlay {
+        display: none;
+        text-shadow: 0px 0px 30px var(--purple);
+        background-color: rgba(0, 0, 0, 0.829);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 50px;
+        font-size: 1.1em;
+        z-index: 99;
+    }
+
+    .welcome-overlay {
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 1em;
+        text-shadow: 0px 0px 40px var(--purple);
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        animation: none !important;
+    }
+
+    .welcome-tag{
+        font-size: 2em;
+        text-shadow: 0px 0px 10px var(--purple); 
+    }
+
+    .welcome-overlay label {
+        font-weight: bolder;
+        font-size: 0.6em;
+    }
+
+    .welcome-overlay input {
+        font-family: 'Syne Mono';
+        font-size: 0.9em;
+        font-weight: bolder;
+        height: 30px;
+        width: 200px;
+        background-color: black;
+        border: 3px solid var(--purple);
+        border-radius: 5%;
+    }
+
+    .welcome-button {
+        margin-top: 10px;
+        height: 40px !important;
+        width: 120px !important;
+        font-size: 1em !important;
+        background-color: var(--purple) !important;
+        font-family: 'Syne Mono';
+        font-weight: bolder;
+        color: white !important;
+        border: none;
+        border-radius: 5%;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .welcome-button:hover {
+        background-color: white !important;
+        color: var(--purple) !important;
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
+    }
+    .welcome-overlay label {
+        font-weight: bolder;
+        font-size: 0.9em;
+    }
+
+    .start-game {
+        margin: 10px;
+        height: 50px;
+        width: 120px;
+        background-color: var(--purple);
+        font-family: 'Syne Mono';
+        font-weight: bolder;
+        font-size: 1.3em;
+        color: white;
+        border: none;
+        border-radius: 5%;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .start-game:hover {
+        background-color: white;
+        color: var(--purple);
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
+    }
+
+    .rules {
+        display: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 0.7em;
+        text-shadow: 0px 0px 40px var(--purple);
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto 0 auto;
+        margin-left: 5px;
+        flex-direction: column;
+        column-gap: 100px;
+    }
+    
+    .rules.visible {
+        display: flex;
+    }
+
+    .rules h1 {
+        margin-top: 60px;
+    }
+
+    .rules h2 {
+        margin-top: 0px;
+    }
+
+    .stars {
+        float: left;
+        width: 30%;
+        height: 45%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 1px solid var(--purple);
+    }
+
+    .stars i {
+        padding-bottom: 1px;
+    }
+
+    .game-container {
+        display: grid;
+        grid-template-columns: repeat(8, auto);
+        grid-gap: 5px;
+        margin-top: 100px;
+        justify-content: center;
+        perspective: 500px;
+    }
+    
+    .game-info {
+        font-size: 0.9em;
+        text-shadow: 0px 0px 15px var(--purple);
+    }
+    
+    .card {
+        position: relative;
+        height: 85px;
+        width: 60px;
+    }
+
+    .card-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+        box-shadow: 0px 0px 10px var(--purple);
+        transition: transform 500ms ease-in-out;
+    }
+
+    .overlay-text {
+        font-size: 1.3em;
+        text-shadow: 0px 0px 30px var(--purple);
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .overlay-button {
+        display: flex;
+        height: 30px;
+        width: 100px;
+        font-size: 0.6em;
+        background-color: var(--purple);
+        font-weight: bolder;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        justify-content: space-around;
+        align-items: center;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .sfx {
+        display: flex;
+        z-index: 1000;
+        height: 50px;
+        width: 50px;
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 1.3em;
+        border: none;
+        position: fixed;
+        bottom: -5px;
+        left: 20px;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width : 375px) and (max-width : 667px) and (orientation : portrait) {
+
+    .page-title {
+        font-family: 'Libre Barcode 128 Text';
+        text-shadow: 0px 0px 40px var(--purple);
+        font-size: 3em;
+        font-weight: normal;
+        padding: 20px;
+        top: 5px;
+        left: 5px;
+        margin: 0;
+        position: absolute;
+        z-index: 999;
+    }
+
+    .info-overlay {
+        display: none;
+        text-shadow: 0px 0px 30px var(--purple);
+        background-color: rgba(0, 0, 0, 0.829);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 0.7em;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .info-overlay p {
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .fa-question-circle {
+        font-size: 1.5em;
+        position: absolute;
+        display: unset;
+        top: 30px;
+        right: 20px;
+        text-shadow: 0px 0px 20px var(--purple);
+        cursor: pointer;
+    }
+    
+    .fa-undo {
+        text-shadow: 0px 0px 30px var(--purple);
+        position: fixed;
+        top: 0;
+        right: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: right;
+        margin-top: 73px;
+        margin-right: 23px;
+        font-size: 1.1em;
+        cursor: pointer;
+    }
+
+    .reset-overlay {
+        display: none;
+        text-shadow: 0px 0px 30px var(--purple);
+        background-color: rgba(0, 0, 0, 0.829);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        padding-top: 50px;
+        font-size: 1.1em;
+        z-index: 99;
+    }
+
+    .welcome-overlay {
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 1em;
+        text-shadow: 0px 0px 40px var(--purple);
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        animation: none !important;
+    }
+
+    .welcome-tag{
+        font-size: 2em;
+        text-shadow: 0px 0px 10px var(--purple); 
+    }
+
+    .welcome-overlay label {
+        font-weight: bolder;
+        font-size: 0.6em;
+    }
+
+    .welcome-overlay input {
+        font-family: 'Syne Mono';
+        font-size: 0.9em;
+        font-weight: bolder;
+        height: 30px;
+        width: 200px;
+        background-color: black;
+        border: 3px solid var(--purple);
+        border-radius: 5%;
+    }
+
+    .welcome-button {
+        margin-top: 10px;
+        height: 40px !important;
+        width: 120px !important;
+        font-size: 1em !important;
+        background-color: var(--purple) !important;
+        font-family: 'Syne Mono';
+        font-weight: bolder;
+        color: white !important;
+        border: none;
+        border-radius: 5%;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .welcome-button:hover {
+        background-color: white !important;
+        color: var(--purple) !important;
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
+    }
+    .welcome-overlay label {
+        font-weight: bolder;
+        font-size: 0.9em;
+    }
+
+    .start-game {
+        margin: 10px;
+        height: 40px;
+        width: 110px;
+        margin-right: 30px;
+        background-color: var(--purple);
+        font-family: 'Syne Mono';
+        font-weight: bolder;
+        font-size: 1.2em;
+        color: white;
+        border: none;
+        border-radius: 5%;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .start-game:hover {
+        background-color: white;
+        color: var(--purple);
+        box-shadow: 0px 0px 30px var(--purple);
+        border: 2px solid var(--purple);
+    }
+
+    .rules {
+        display: none;
+        background: rgba(0, 0, 0, 0);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 0.7em;
+        text-shadow: 0px 0px 40px var(--purple);
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        margin-left: 22px;
+        z-index: 998;
+    }
+
+    .rules.visible {
+        display: flex;
+    }
+
+    .rules h1 {
+        margin-top: 60px;
+    }
+
+    .rules h2 {
+        margin-top: 0px;
+    }
+
+    .rules h4 {
+        margin-right: 20px;
+    }
+
+    .stars {
+        float: left;
+        width: 25%;
+        height: 60%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 1px solid var(--purple);
+    }
+
+    .stars i {
+        padding-bottom: 1px;
+    }
+
+    .game-container {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-gap: 10px;
+        margin-top: 155px;
+        justify-content: center;
+        perspective: 500px;
+    }
+
+    .game-info-container {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .card {
+        position: relative;
+        height: 85px;
+        width: 60px;
+    }
+
+    .card-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backface-visibility: hidden;
+        box-shadow: 0px 0px 10px var(--purple);
+        transition: transform 500ms ease-in-out;
+    }
+
+    .overlay-text {
+        font-size: 1.2em;
         text-shadow: 0px 0px 30px var(--purple);
         display: none;
         position: fixed;

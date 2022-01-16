@@ -49,4 +49,13 @@ function draw() {
         drops[i]++;
     }
 }
+
+//----------------------------------------------resizes canvas on window size change
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    draw();
+});
+
+//-----------------------------------------------------calls function and sets speed
 setInterval(draw, 35);

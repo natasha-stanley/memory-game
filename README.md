@@ -100,7 +100,7 @@ To validate my code I used:
 
 ## Bugs/Problems
 
-There is no known bugs in the current application, however there was difficulty implementing individual levels for the game and thus will be a feature to implement in the future.
+Mostly fixed the issue with the background Javascript animation, in that it had trouble resizing itself when switching from portrait to landscape, and switching from desktop to mobile and vice versa. It currently works as expected for these queries but when manually resizing the desktop in the browser dev tools and then switching it back to full screen desktop, the animation cuts off on the side.
 
 ## Deployment
 
