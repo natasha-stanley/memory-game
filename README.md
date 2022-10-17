@@ -121,11 +121,11 @@ The hosting platform that I've used for my project is GitHub Pages. To deploy my
 
 ### Repository Link
 
-Repository **[here](https://github.com/natasha-crain/memory-game)**.
+Repository **[here](https://github.com/natasha-stanley/memory-game)**.
 
 ### Published Site
 
-Live site **[here](https://natasha-crain.github.io/memory-game/)**.
+Live site **[here](https://natasha-stanley.github.io/memory-game/)**.
 
 Running Code Locally
 
